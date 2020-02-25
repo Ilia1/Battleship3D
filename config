@@ -1,0 +1,16 @@
+// Skin for the properties dialog
+#define SKIN1 55
+#define SKIN2 77
+#define SKIN3 78
+
+// Skin for the main window
+#define SKIN1_ 55
+#define SKIN2_ 77
+#define SKIN3_ 78
+
+// Uncomment to Use skinned interface
+#define USE_SKIN
+
+// #define NO_TEXT		// Set if you don't support renderText
+#define FR	 		// Set language : FR = Francais ; EN = English
+// #define DBG_MODE		// DEBUGING MODE
