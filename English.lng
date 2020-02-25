@@ -15,7 +15,7 @@
 #define NEW "&New"
 #define READ "&Read"
 #define SAVE "&Save"
-#define SAVE_AS "&Save as"
+#define SAVE_AS "Save &as"
 #define FINISH "&Finish"
 #define ADD_BOAT "&Add a boat"
 #define ELIMINATE "&Eliminate"
