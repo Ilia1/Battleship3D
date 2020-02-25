@@ -1,0 +1,55 @@
+Mode d'utilisation du programme :
+
+Le programme Tux Battleship 3D est un jeu de bataille navale sous linux. Son utilisation est assez simple et plusieurs raccourcis clavier permettent d'accéder rapidement à certaines fonctionnalités.
+
+1 - Se déplacer dans le monde virtuel du jeu:
+Une fois le programme lancé, vous pouvez vous déplacer dans le monde virtuel à l'aide des différents modes de cameras. Il faut utiliser les flèches du clavier et les touches "+"(plus) et "-"(moins)  pour manipuler les différents modes de camera. Pour choisir votre mode de camera vous pouvez utiliser le menu, la barre d'outils ou les raccourcis clavier :
+S -> Vue à la première personne. Les flèches du clavier permettent de changer la direction dans laquelle vous dirigez votre regard et les touches +/- permettent respectivement d'avancer et de reculer.
+P -> Vue centrée. Ce mode de camera a une vue centrée sur le milieu de la carte (un point situé entre votre carte de jeu et celle de l'adversaire). Les flèches du clavier permettent d'orbiter autour de ce point, en se déplaçant sur une sphère invisible tandis que les touches +/- permettent respectivement d'approcher ou de s'éloigner du point central. (fonction de "zoom").
+H -> Vue en 2 dimensions. Ce mode de camera vous place en haut de la carte de jeu, ayant une vue perpendiculaire à la scène. Les flèches du clavier permettent de se déplacer autour de votre monde tout en restant perpendiculaire au niveau de la mer tandis que les touches +/- permettent de faire varier l'altitude à laquelle la camera se trouve (la touche + signifiant une diminution de l'altitude).
+
+2 - Le Jeu :
+Ce jeu contient deux modes : un mode d'Édition et mode de Jeu. Le mode d'édition vous permettant de placer vos bateaux sur votre carte et le mode de jeu vous permettant de vous mesurer contre un adversaire (dans notre cas, l'intelligence artificielle de l'ordinateur) et de chercher la victoire.
+
+2.1 - Mode Édition:
+Au démarrage, le jeu est en mode Édition et il faut alors placer vos bateaux sur votre carte. Pour cela, cinq types de bateaux sont à votre disposition : un contre-torpilleur, un sous-marin, un croiseur, un cuirassé et un porte-avion. Pour pouvoir jouer, vous devez avoir placé au moins un bateau de chaque type pour un total de cinq bateaux minimum. Pour placer un bateau, vous devez préalablement le créer à l'aide des icônes disponibles dans la barre d'outils ou à partir du menu "Edition"->"Ajouter un bateau" avec une des touches 1, 2, 3, 4 ou 5 de votre clavier (un nombre correspondant respectivement à un type de bateau cité précédemment). Une fois le bateau créé, il suivra le curseur de votre souris (sans dépasser les limites de votre carte de jeu), et un click de bouton gauche permet de placer un bateau sur la case au dessus de laquelle se trouve le curseur. Pour faire pivoter votre bateau de 90 °, il suffiras de cliquer sur le bouton du milieu de votre souris. Un deuxième click sur ce bouton remet le bateau dans sa direction originale. Lorsque vous aurez placé votre premier bateau, vous remarquerez qu'il vous sera impossible de placer un second bateau sur une case adjacente au premier. Effectivement, une règle du jeu est que chaque bateau doit être séparé d'un autre d'au moins une case, ceci dans un but d'éviter une concentration de bateaux dans le même voisinage. Vous pouvez changer les propriétés d'un bateau interactivement à partir d'une fenêtre de dialogue en choisissant "Propriétés" dans le menu contextuel du bateau. Ce dernier est accessible par un click de bouton droit de votre souris sur le bateau de votre choix. Il vous est aussi possible de modifier les propriétés de vos bateaux à l'aide de raccourcis clavier. Les touches "9" et "0" de votre clavier vous permettent respectivement de diminuer et d'augmenter la taille de votre bateau sélectionné (modification du type de bateau). Pour sélectionner un bateau différent (habituellement le dernier placé), il vous suffit de cliquer sur un bateau pour le sélectionner. Les raccourcis clavier "[" et "]" permettent aussi de changer le bateau sélectionné, "[" permettant de passer au bateau précédant (selon l'ordre de création) tandis que "]" permet de passer au bateau suivant. 
+Lorsque vous aurez fini de placer vos bateaux, vous pouvez appuyer sur l'item de menu  "Jouer"->"Jouer" ou en appuyant sur la touche "Enter" de votre clavier. Si vous n'avez pas placé tous vos bateaux, un message apparaîtra pour vous indiquer quels bateaux manquent à votre flotte. Sinon, vous passerez en mode Jeu. 
+
+2-2 Mode Jeu :
+En mode Jeu, certains menu ("Edition" et "Jouer") ainsi que certains icônes de la barre d'outils (Les bateaux) seront dorénavant désactivés. La partie consiste alors à découvrir la flotte de l'adversaire et à la couler. Lors du début de la partie, l'adversaire a aussi placé le même nombre de bateaux que vous pour chacun des types de bateau disponible, totalement aléatoirement sur sa carte. Vous commencerez la partie, et vous devrez cliquer sur les cases de l'ennemi. Une case, originalement bleue deviendras de couleur noire si vous avez raté la cible, ou deviendras de couleur rouge si vous avez touché un bateau. Un message apparaît à l'écran dans les deux cas. Une fois votre tour passé, l'adversaire va également tirer sur votre flotte, il s'agit là d'un tir totalement aléatoire. Votre tour reprends, et ainsi de suite jusqu'à ce que le meilleur gagne. Si vous désirez suspendre la partie, vous pouvez appuyer sur la barre d'espacement, et si vous voulez manipuler la vitesse de déroulement de la partie, les touches du clavier "R" et "T" permettent respectivement de ralentir la vitesse de déroulement du jeu et de l'accélérer. Lorsqu'un bateau est touché, un symbole de bombe apparaît en haut de la case concernée et pivoteras pour indiquer un signe de danger. Lorsqu'un bateau est coulé, les bombes disparaissent et le bateau coule (s'enfonce légèrement dans l'eau en s'inclinant sur le coté). Si le bateau coulé est le bateau de l'adversaire, celui ci apparaîtra à l'écran. Un score sera affiché en haut de l'écran pour indiquer le nombre de bateaux coulés pour les deux équipes. 
+Une fois la partie terminée (tous les bateaux d'une flotte ont été coulés) un message indique votre statut : perdant ou gagnant. la camera se mets alors a pivoter autour du centre de la carte si vous étés en mode "Vue centrée".
+
+3- Nouvelle partie, Enregistrer/Charger partie:
+Une fois la partie terminée, vous pouvez recommencer à jouer depuis le début en sélectionnant le menu "Fichier"->"Nouveau" ou en cliquant sur l'objet "Nouvelle partie" dans la barre d'outil. Si vous désirez sauvegarder votre partie en cours de jeu, vous pouvez sélectionner le menu   "Fichier"->"Enregistrer sous" ou "Fichier"->"Enregistrer" et de spécifier un nom de fichier pour  la sauvegarde (ou d'utiliser la raccourci clavier "W" qui enregistre dans un fichier de sauvegarde rapide). Pour charger une partie déjà enregistrée, il suffit de sélectionner le menu "Fichier"->"Lire" et de choisir le fichier à charger (ou d'utiliser la raccourci clavier "L" qui lis du fichier de sauvegarde rapide).
+
+4- Raccourcis clavier :
+4.1 - Raccourcis accessibles en tout temps :
+4.1.1 Raccourcis généraux:
+S -> Caméra avec vue à la première personne
+P -> Caméra avec vue centrée
+H -> Caméra en vue 2D
+R -> Diminuer vitesse de déroulement du jeu
+T -> Augmenter vitesse de déroulement du jeu
+Barre Espace -> Suspens/Reprends la partie
+W -> Save Rapide sur fichier courrant
+L -> Chargement Rapide sur fichier courrant
+
+4.1.2 - Autres raccourcis :
+K -> Diminuer le détail du paysage
+J -> Augmenter le détail du paysage
+G -> Diminuer la correction Gamma pour le paysage
+F -> Augmenter la correction Gamma pour le paysage
+E -> Vérification des erreurs OpenGL (sur la sortie standard de la console)
+I -> Afficher les informations sur la partie en cours (sur la sortie standard de la console)
+
+4.2 - Raccourcis accessibles en mode édition uniquement :
+1 -> Créer un bateau de type Contre-torpilleur
+2 -> Créer un bateau de type Sous-marin
+3 -> Créer un bateau de type Croiseur
+4 -> Créer un bateau de type Cuirassé
+5 -> Créer un bateau de type Porte-avion
+] -> Augmenter la taille du bateau sélectionné
+[ -> Diminuer la taille du bateau sélectionné
+9 -> Sélectionner le bateau précédant
+0 -> Sélectionner le bateau suivant
+Barre Entrer -> Commencer la partie

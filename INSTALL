@@ -1,0 +1,8 @@
+To compile the programme you need to do the following :
+
+qmake -project
+qmake
+make
+
+if the linking fails (undefined references), edit the Makefile file and add in the LIBS variable : "-lGL -lGLU" and type "make" again
+better compilation steps will be soon implemented with hopefully a simple "./configure && make" command to do everything perfectly
