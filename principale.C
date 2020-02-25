@@ -113,7 +113,7 @@ Principale::Principale( void )
       QGLFormat fmt( FALSE );
       graphique->setFormat( fmt );
       if ( !graphique->isValid() )
-	fatal("Impossible de creer un contexte de rendu OpenGL sur cette station");
+	fatal("Unable to create an OpenGL rendering context on this station");
     }
   graphique->setMinimumSize( 1024, 768 );
   fenetrePrincipale->setCentralWidget( graphique );
@@ -125,49 +125,49 @@ Principale::Principale( void )
   // Creer trois menus
   // Menu Fichier:
   menuFichier = new QPopupMenu;
-  menuFichier->insertItem( newIcon, "&Nouveau", this, SLOT(slotNouveau()), CTRL+Key_N);
-  menuFichier->insertItem( openIcon, "&Lire", this, SLOT(slotLire()), CTRL+Key_L );
+  menuFichier->insertItem( newIcon, NEW, this, SLOT(slotNouveau()), CTRL+Key_N);
+  menuFichier->insertItem( openIcon, READ, this, SLOT(slotLire()), CTRL+Key_L );
   menuFichier->insertSeparator();
-  menuFichier->insertItem( saveIcon, "&Enregistrer", this, SLOT(slotSave()), CTRL+Key_S );
-  menuFichier->insertItem( "Enregistrer &Sous", this, SLOT(slotSaveAs()) );
+  menuFichier->insertItem( saveIcon, SAVE, this, SLOT(slotSave()), CTRL+Key_S );
+  menuFichier->insertItem( SAVE_AS, this, SLOT(slotSaveAs()) );
   menuFichier->insertSeparator();
-  menuFichier->insertItem( "&Terminer", qApp, SLOT(quit()), Key_Q );
+  menuFichier->insertItem( FINISH, qApp, SLOT(quit()), Key_Q );
 #ifdef USE_SKIN
   menuFichier->setPalette( p, TRUE );
 #endif
 
   // Menu Aide:
   menuAide = new QPopupMenu;
-  menuAide->insertItem( "&A propos du tp2" );
-  menuAide->insertItem( "A propos de &Qt", this, SLOT( slotAproposQt() ) );
+  menuAide->insertItem( "&About tp2" );
+  menuAide->insertItem( "About &Qt", this, SLOT( slotAproposQt() ) );
 #ifdef USE_SKIN
   menuAide->setPalette( p, TRUE );
 #endif
 
   // Menu Ajout de bateau
   QPopupMenu * bateaux = new QPopupMenu;
-  bateaux->insertItem(boat1, "Contre-Torpilleur", this, SLOT(Nv_Bat1()), Key_1);
-  bateaux->insertItem(boat2, "Sous-Marin", this, SLOT(Nv_Bat2()), Key_2);
-  bateaux->insertItem(boat3, "Croiseur", this, SLOT(Nv_Bat3()), Key_3);
-  bateaux->insertItem(boat4, "Cuirasse", this, SLOT(Nv_Bat4()), Key_4);
-  bateaux->insertItem(boat5, "Porte-Avion", this, SLOT(Nv_Bat5()), Key_5);
+  bateaux->insertItem(boat1, BAT1, this, SLOT(Nv_Bat1()), Key_1);
+  bateaux->insertItem(boat2, BAT2, this, SLOT(Nv_Bat2()), Key_2);
+  bateaux->insertItem(boat3, BAT3, this, SLOT(Nv_Bat3()), Key_3);
+  bateaux->insertItem(boat4, BAT4, this, SLOT(Nv_Bat4()), Key_4);
+  bateaux->insertItem(boat5, BAT5, this, SLOT(Nv_Bat5()), Key_5);
 #ifdef USE_SKIN
   bateaux->setPalette( p, TRUE );
 #endif
     
   // Menu Edition:
   menuEdition = new QPopupMenu;
-  menuEdition->insertItem("&Ajouter un bateau", bateaux);
-  menuEdition->insertItem(x, "&Eliminer", graphique, SLOT(Delete_Objet()), Key_Delete);
+  menuEdition->insertItem(ADD_BOAT, bateaux);
+  menuEdition->insertItem(x, ELIMINATE, graphique, SLOT(Delete_Objet()), Key_Delete);
   menuEdition->insertSeparator();
-  menuEdition->insertItem(prop, "&Proprietes", graphique, SLOT(slotProprietes()));
+  menuEdition->insertItem(prop, PROPERTIES, graphique, SLOT(slotProprietes()));
 #ifdef USE_SKIN
   menuEdition->setPalette( p, TRUE );
 #endif
 
   //Menu Jouer:
   menuJouer = new QPopupMenu;
-  menuJouer->insertItem("&Jouer!", this, SLOT(CommencerJeu()), Key_Return);
+  menuJouer->insertItem(TO_PLAY, this, SLOT(CommencerJeu()), Key_Return);
 #ifdef USE_SKIN
   menuJouer->setPalette( p, TRUE );
 #endif
@@ -175,8 +175,8 @@ Principale::Principale( void )
   // Menu Camera:
   menuCamera = new QPopupMenu;
   menuCamera->insertItem(cam1, "&Camera 2D", this, SLOT(Cam_Mode1()), Key_H);
-  menuCamera->insertItem(cam2, "&Orbiter en 3D", this, SLOT(Cam_Mode2()), Key_P);
-  menuCamera->insertItem(cam3, "&Libre en 3D", this, SLOT(Cam_Mode3()), Key_S);
+  menuCamera->insertItem(cam2, "&Orbit in 3D", this, SLOT(Cam_Mode2()), Key_P);
+  menuCamera->insertItem(cam3, "&Free in 3D", this, SLOT(Cam_Mode3()), Key_S);
 #ifdef USE_SKIN
   menuCamera->setPalette( p, TRUE );
 #endif
@@ -190,59 +190,59 @@ Principale::Principale( void )
 
   //    barreMenu->setItemChecked(ID_CDE,TRUE);
 
-  barreMenu->insertItem( "&Fichier", menuFichier );
+  barreMenu->insertItem( FILES, menuFichier );
 
   barreMenu->insertSeparator();
-  menuEditionID = barreMenu->insertItem( "&Edition", menuEdition );
+  menuEditionID = barreMenu->insertItem( EDITING, menuEdition );
 
   barreMenu->insertSeparator();
-  menuJeuID = barreMenu->insertItem( "&Jouer", menuJouer );
+  menuJeuID = barreMenu->insertItem( TO_PLAY, menuJouer );
 
   barreMenu->insertSeparator();
   barreMenu->insertItem( "&Camera", menuCamera );
 
   barreMenu->insertSeparator();
-  barreMenu->insertItem( "&Aide", menuAide );
+  barreMenu->insertItem( "&Help", menuAide );
 
   // Barre d'outils
-  QToolBar* barreOutils = new QToolBar( fenetrePrincipale, "Fonctions Principales" );
-  barreOutils->setLabel( "Fonctions Principales" );
+  QToolBar* barreOutils = new QToolBar( fenetrePrincipale, MAIN_DUTIES );
+  barreOutils->setLabel( MAIN_DUTIES );
 
   QToolButton* bouton1;
-  bouton1 = new QToolButton(newIcon, "Nouvelle Partie", QString::null,
+  bouton1 = new QToolButton(newIcon, NEW_PART, QString::null,
 			    this, SLOT(slotNouveau()), barreOutils);
   QToolButton* bouton2;
-  bouton2 = new QToolButton(openIcon, "Charger Partie", QString::null,
+  bouton2 = new QToolButton(openIcon, LOAD_GAME, QString::null,
 			    this, SLOT(slotLire()), barreOutils);
   QToolButton* bouton3;
-  bouton3= new QToolButton(saveIcon, "Sauvergarder Partie", QString::null,
+  bouton3= new QToolButton(saveIcon, SAVE_GAME, QString::null,
                            this, SLOT(slotSave()), barreOutils);
 
 
   QToolBar* barreEdition;
-  barreEdition  = new QToolBar( fenetrePrincipale, "Ajout de bateaux" );
-  barreEdition->setLabel( "Ajout de bateaux" );
+  barreEdition  = new QToolBar( fenetrePrincipale, ADDITION_OF_BOATS );
+  barreEdition->setLabel( ADDITION_OF_BOATS );
 
 
-  bouton11 = new QToolButton(boat1, "Contre-Torpilleur", QString::null,
+  bouton11 = new QToolButton(boat1, BAT1, QString::null,
 			     this, SLOT(Nv_Bat1()), barreEdition);
 
-  bouton12 = new QToolButton(boat2, "Sous-Marin", QString::null,
+  bouton12 = new QToolButton(boat2, BAT2, QString::null,
 			     this, SLOT(Nv_Bat2()), barreEdition);
 
-  bouton13 = new QToolButton(boat3, "Croiseur", QString::null,
+  bouton13 = new QToolButton(boat3, BAT3, QString::null,
 			     this, SLOT(Nv_Bat3()), barreEdition);
 
-  bouton14  = new QToolButton(boat4, "Cuirasse", QString::null,
+  bouton14  = new QToolButton(boat4, BAT4, QString::null,
 			      this, SLOT(Nv_Bat4()), barreEdition);
 
-  bouton15 = new QToolButton(boat5, "Porte-Avion", QString::null,
+  bouton15 = new QToolButton(boat5, BAT5, QString::null,
 			     this, SLOT(Nv_Bat5()), barreEdition);
 
-  bouton16 = new QToolButton(x, "Effacer Bateau", QString::null,
+  bouton16 = new QToolButton(x, CLEAR_BOAT, QString::null,
 			     this, SLOT(Delete_Objet()), barreEdition);
 
-  bouton17 = new QToolButton(prop, "Proprietes du Bateau", QString::null,
+  bouton17 = new QToolButton(prop, BOAT_PROPERTIES, QString::null,
 			     graphique, SLOT(slotProprietes()), barreEdition);
 
   QToolBar* barreCam = new QToolBar( fenetrePrincipale, "Mode de Camera" );

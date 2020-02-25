@@ -96,32 +96,32 @@ ostream& Bateau::imprimer( ostream& out ) const
 
   if(ennemi) return out;
 
-  out << "\nBateau de type ";
+  out << TYPE_OF_BOAT"\nType of boat ";
   switch(type)
     {
     case 1 :
-      out << "Contre-torpilleur," ;
+      out << "Against-Torpedo," ;
       break;
     case 2:
-      out << "Sous-marin,";
+      out << "Submarine,";
       break;
     case 3:
-      out << "Croiseur,";
+      out << "Cruiser,";
       break;
     case 4:
-      out << "Cuirasse,";
+      out << "Cuirass,";
       break;
     case 5:
-      out << "Porte-avion,";
+      out << "Aircraft carrier,";
       break;
     }
-  out << " place aux coordonees : " << x << " " 
-      << y << " "  << "\nAvec numero d'Id : " << id << endl;
+  out << " place at coordinates : " << x << " " 
+      << y << " "  << "\nWith Id number : " << id << endl;
 
-  if(select) out << "Ce bateau est le bateau selectione\n";
+  if(select) out << "This boat is the selected boat\n";
 
   if(touches)
-    out << "Le bateau a ete touche " << touches << " fois.\n";
+    out << "The boat was hit " << touches << " time.\n";
 	
   return out;
 }
