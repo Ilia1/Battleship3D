@@ -11,7 +11,6 @@
 #define HORIZONTAL "Horizontal"
 #define POSITION "Position :"
 #define TYPE_OF_BOAT "\nType of boat "
-#define CLOSE "To close"
 #define BOAT_PROPERTIES "Boat properties"
 #define NEW "&New"
 #define READ "&Read"
