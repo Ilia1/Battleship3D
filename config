@@ -12,5 +12,5 @@
 #define USE_SKIN
 
 // #define NO_TEXT		// Set if you don't support renderText
-#define FR	 		// Set language : FR = Francais ; EN = English
+#define EN	 		// Set language : FR = Francais ; EN = English
 // #define DBG_MODE		// DEBUGING MODE
