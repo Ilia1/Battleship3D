@@ -113,8 +113,11 @@ Principale::Principale( void )
   if ( !graphique->isValid() )
     {
       // Essayer sans double-buffering
-      //QGLFormat fmt( FALSE );
-      //graphique->setFormat( fmt );
+      QGLFormat fmt;
+      fmt.setAlpha(true);
+      fmt.setStereo(true);
+      QGLFormat::setDefaultFormat(fmt);
+      graphique->setFormat( fmt );
       if ( !graphique->isValid() )
 	qFatal("Unable to create an OpenGL rendering context on this station");
     }
