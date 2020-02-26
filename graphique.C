@@ -707,22 +707,22 @@ bool Graphique::PriseEnChargeMousePlay(QMouseEvent * ev)
     return false;
   if(leModele->GetObjet(Objet)->GetEtatJeu() == 1)
     {
-      leModele->GetText()->addText("Case deja testee!!! Recommencez", 0);
+      leModele->GetText()->addText(MESSAGE_CASE_TESTED, 0);
       return false;
     }
   if(leModele->GetObjet(Objet)->GetEtat() == 2 && leModele->GetObjet(Objet)->GetEtatJeu() == 0)
     {
       tour = false;
-      leModele->GetText()->addText("Vous avez TOUCHE! Bravo!", 0);
+      leModele->GetText()->addText(MESSAGE_TOUCH, 0);
       leModele->GetObjet(Objet)->SetEtatJeu(1);
       leModele->GetObjet(Objet)->Touche();
       if(leModele->GetObjet(leModele->GetObjet(Objet)->GetBateau())->VerifierCoule(leModele)) 
-        leModele->GetText()->addText("Bravo! Vous avez COULE un bateau ennemi!", 0);
+        leModele->GetText()->addText(MESSAGE_SINK, 0);
       return true;
     }
   if(leModele->GetObjet(Objet)->GetEtat() == 3 && leModele->GetObjet(Objet)->GetTouche() == 1)
     {
-      leModele->GetText()->addText("Peripherie de bateau... aucun bateau possible dans cette case!!!Recommencez", 0);
+      leModele->GetText()->addText(MESSAGE_PERIPHERY_BOAT, 0);
       return false;
     }
 

@@ -28,3 +28,7 @@
 #define SAVE_GAME "Sauvergarder Partie"
 #define ADDITION_OF_BOATS "Ajout de bateaux"
 #define CLEAR_BOAT "Effacer Bateau"
+#define MESSAGE_TOUCH "Vous avez TOUCHE! Bravo!"
+#define MESSAGE_SINK "Bravo! Vous avez COULE un bateau ennemi!"
+#define MESSAGE_CASE_TESTED "Case deja testee!!! Recommencez"
+#define MESSAGE_PERIPHERY_BOAT "Peripherie de bateau... aucun bateau possible dans cette case!!!Recommencez"

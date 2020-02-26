@@ -29,4 +29,7 @@
 #define SAVE_GAME "Save game"
 #define ADDITION_OF_BOATS "Addition of boats"
 #define CLEAR_BOAT "Clear boat"
-
+#define MESSAGE_TOUCH "You have TOUCH! Well done!"
+#define MESSAGE_SINK "Well done! You SINK an enemy ship!"
+#define MESSAGE_CASE_TESTED "Case already tested !!! Repeat"
+#define MESSAGE_PERIPHERY_BOAT ""Periphery of boat ... no boat possible in this box !!! Try again""
