@@ -18,6 +18,9 @@
 #include "./images/cam1.xpm"
 #include "./images/cam2.xpm"
 #include "./images/cam3.xpm"
+//Added by qt3to4:
+#include <QPixmap>
+#include <Q3PopupMenu>
 
 /*---------------------------------------------------------------------------
  * FONCTION: Principale
@@ -61,7 +64,7 @@ Principale::Principale( void )
   cout << "Creation d'une nouvelle fenetre\n";
 #endif
   // Creer une fenetre principale
-  fenetrePrincipale = new QMainWindow;
+  fenetrePrincipale = new Q3MainWindow;
 #ifdef DBG_MODE
   cout << "Fin Creation d'une nouvelle fenetre\n" << &fenetrePrincipale;
 #endif
@@ -110,10 +113,10 @@ Principale::Principale( void )
   if ( !graphique->isValid() )
     {
       // Essayer sans double-buffering
-      QGLFormat fmt( FALSE );
-      graphique->setFormat( fmt );
+      //QGLFormat fmt( FALSE );
+      //graphique->setFormat( fmt );
       if ( !graphique->isValid() )
-	fatal("Unable to create an OpenGL rendering context on this station");
+	qFatal("Unable to create an OpenGL rendering context on this station");
     }
   graphique->setMinimumSize( 1024, 768 );
   fenetrePrincipale->setCentralWidget( graphique );
@@ -124,20 +127,20 @@ Principale::Principale( void )
 
   // Creer trois menus
   // Menu Fichier:
-  menuFichier = new QPopupMenu;
-  menuFichier->insertItem( newIcon, NEW, this, SLOT(slotNouveau()), CTRL+Key_N);
-  menuFichier->insertItem( openIcon, READ, this, SLOT(slotLire()), CTRL+Key_L );
+  menuFichier = new Q3PopupMenu;
+  menuFichier->insertItem( newIcon, NEW, this, SLOT(slotNouveau()), Qt::CTRL+Qt::Key_N);
+  menuFichier->insertItem( openIcon, READ, this, SLOT(slotLire()), Qt::CTRL+Qt::Key_L );
   menuFichier->insertSeparator();
-  menuFichier->insertItem( saveIcon, SAVE, this, SLOT(slotSave()), CTRL+Key_S );
+  menuFichier->insertItem( saveIcon, SAVE, this, SLOT(slotSave()), Qt::CTRL+Qt::Key_S );
   menuFichier->insertItem( SAVE_AS, this, SLOT(slotSaveAs()) );
   menuFichier->insertSeparator();
-  menuFichier->insertItem( FINISH, qApp, SLOT(quit()), Key_Q );
+  menuFichier->insertItem( FINISH, qApp, SLOT(quit()), Qt::Key_Q );
 #ifdef USE_SKIN
   menuFichier->setPalette( p, TRUE );
 #endif
 
   // Menu Aide:
-  menuAide = new QPopupMenu;
+  menuAide = new Q3PopupMenu;
   menuAide->insertItem( "&About tp2" );
   menuAide->insertItem( "About &Qt", this, SLOT( slotAproposQt() ) );
 #ifdef USE_SKIN
@@ -145,20 +148,20 @@ Principale::Principale( void )
 #endif
 
   // Menu Ajout de bateau
-  QPopupMenu * bateaux = new QPopupMenu;
-  bateaux->insertItem(boat1, BAT1, this, SLOT(Nv_Bat1()), Key_1);
-  bateaux->insertItem(boat2, BAT2, this, SLOT(Nv_Bat2()), Key_2);
-  bateaux->insertItem(boat3, BAT3, this, SLOT(Nv_Bat3()), Key_3);
-  bateaux->insertItem(boat4, BAT4, this, SLOT(Nv_Bat4()), Key_4);
-  bateaux->insertItem(boat5, BAT5, this, SLOT(Nv_Bat5()), Key_5);
+  Q3PopupMenu * bateaux = new Q3PopupMenu;
+  bateaux->insertItem(boat1, BAT1, this, SLOT(Nv_Bat1()), Qt::Key_1);
+  bateaux->insertItem(boat2, BAT2, this, SLOT(Nv_Bat2()), Qt::Key_2);
+  bateaux->insertItem(boat3, BAT3, this, SLOT(Nv_Bat3()), Qt::Key_3);
+  bateaux->insertItem(boat4, BAT4, this, SLOT(Nv_Bat4()), Qt::Key_4);
+  bateaux->insertItem(boat5, BAT5, this, SLOT(Nv_Bat5()), Qt::Key_5);
 #ifdef USE_SKIN
   bateaux->setPalette( p, TRUE );
 #endif
     
   // Menu Edition:
-  menuEdition = new QPopupMenu;
+  menuEdition = new Q3PopupMenu;
   menuEdition->insertItem(ADD_BOAT, bateaux);
-  menuEdition->insertItem(x, ELIMINATE, graphique, SLOT(Delete_Objet()), Key_Delete);
+  menuEdition->insertItem(x, ELIMINATE, graphique, SLOT(Delete_Objet()), Qt::Key_Delete);
   menuEdition->insertSeparator();
   menuEdition->insertItem(prop, PROPERTIES, graphique, SLOT(slotProprietes()));
 #ifdef USE_SKIN
@@ -166,17 +169,17 @@ Principale::Principale( void )
 #endif
 
   //Menu Jouer:
-  menuJouer = new QPopupMenu;
-  menuJouer->insertItem(TO_PLAY, this, SLOT(CommencerJeu()), Key_Return);
+  menuJouer = new Q3PopupMenu;
+  menuJouer->insertItem(TO_PLAY, this, SLOT(CommencerJeu()), Qt::Key_Return);
 #ifdef USE_SKIN
   menuJouer->setPalette( p, TRUE );
 #endif
 
   // Menu Camera:
-  menuCamera = new QPopupMenu;
-  menuCamera->insertItem(cam1, "&Camera 2D", this, SLOT(Cam_Mode1()), Key_H);
-  menuCamera->insertItem(cam2, "&Orbit in 3D", this, SLOT(Cam_Mode2()), Key_P);
-  menuCamera->insertItem(cam3, "&Free in 3D", this, SLOT(Cam_Mode3()), Key_S);
+  menuCamera = new Q3PopupMenu;
+  menuCamera->insertItem(cam1, "&Camera 2D", this, SLOT(Cam_Mode1()), Qt::Key_H);
+  menuCamera->insertItem(cam2, "&Orbit in 3D", this, SLOT(Cam_Mode2()), Qt::Key_P);
+  menuCamera->insertItem(cam3, "&Free in 3D", this, SLOT(Cam_Mode3()), Qt::Key_S);
 #ifdef USE_SKIN
   menuCamera->setPalette( p, TRUE );
 #endif
@@ -205,7 +208,7 @@ Principale::Principale( void )
   barreMenu->insertItem( "&Help", menuAide );
 
   // Barre d'outils
-  QToolBar* barreOutils = new QToolBar( fenetrePrincipale, MAIN_DUTIES );
+  Q3ToolBar* barreOutils = new Q3ToolBar( fenetrePrincipale, MAIN_DUTIES );
   barreOutils->setLabel( MAIN_DUTIES );
 
   QToolButton* bouton1;
@@ -219,8 +222,8 @@ Principale::Principale( void )
                            this, SLOT(slotSave()), barreOutils);
 
 
-  QToolBar* barreEdition;
-  barreEdition  = new QToolBar( fenetrePrincipale, ADDITION_OF_BOATS );
+  Q3ToolBar* barreEdition;
+  barreEdition  = new Q3ToolBar( fenetrePrincipale, ADDITION_OF_BOATS );
   barreEdition->setLabel( ADDITION_OF_BOATS );
 
 
@@ -245,7 +248,7 @@ Principale::Principale( void )
   bouton17 = new QToolButton(prop, BOAT_PROPERTIES, QString::null,
 			     graphique, SLOT(slotProprietes()), barreEdition);
 
-  QToolBar* barreCam = new QToolBar( fenetrePrincipale, "Mode de Camera" );
+  Q3ToolBar* barreCam = new Q3ToolBar( fenetrePrincipale, "Mode de Camera" );
   barreCam->setLabel( "Mode de Camera" );
 
   QToolButton* camera1;
@@ -337,7 +340,7 @@ void Principale::slotLire( void )
  
 
   // Une fenetre d'ouverture de fichier apparait et retourne le nom du fichier selectione
-  QString s = QFileDialog::getOpenFileName(
+  QString s = Q3FileDialog::getOpenFileName(
 					   "./",
 					   "Save files (*.sav)",
 					   this,
@@ -377,7 +380,7 @@ void Principale::slotSave( void )
     {
 
       // Demande le nom du fichier pour la sauvegarde
-      QString s = QFileDialog::getSaveFileName(
+      QString s = Q3FileDialog::getSaveFileName(
 					       "./",
 					       "Save files (*.sav)",
 					       this,
@@ -417,7 +420,7 @@ void Principale::slotSaveAs( void )
 {
     
   // Demande le nom du fichier pour la sauvegarde
-  QString s = QFileDialog::getSaveFileName(
+  QString s = Q3FileDialog::getSaveFileName(
 					   "./",
 					   "Save files (*.sav)",
 					   this,

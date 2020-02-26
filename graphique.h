@@ -2,6 +2,11 @@
 #define _HEADER_GRAPHIQUE_H_
 
 #include "headers.h"
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QTimerEvent>
+#include <QKeyEvent>
+#include <Q3PopupMenu>
 
 
 /**
@@ -17,7 +22,7 @@ class Graphique : public QGLWidget
 {
   Q_OBJECT
     public:
-  Graphique( QWidget* parent, const char* name, QStatusBar *status ,   QMainWindow* fenetrePrincipale );
+  Graphique( QWidget* parent, const char* name, QStatusBar *status ,   Q3MainWindow* fenetrePrincipale );
   ~Graphique( void );
 
   // accesseurs et modificateurs
@@ -69,7 +74,7 @@ class Graphique : public QGLWidget
   void slotProprietes( void );
 
  private:
-  QMainWindow* fenetrePrincipale;
+  Q3MainWindow* fenetrePrincipale;
   bool PriseEnChargeKeys(QKeyEvent*);
   bool PriseEnChargeKeysEdition(QKeyEvent*);
   bool PriseEnChargeKeysEdit(QKeyEvent*);
@@ -95,7 +100,7 @@ class Graphique : public QGLWidget
   QString fpsstring;
   int fpsec;
   QStatusBar *statusbar;
-  QPopupMenu* menuPopup;
+  Q3PopupMenu* menuPopup;
   Models3D * lesModeles3D;
   Terrain *solmarin;
 };

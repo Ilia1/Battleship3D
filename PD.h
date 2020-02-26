@@ -2,13 +2,16 @@
 #define PROPERTIESD_H
 
 #include "headers.h"
+//Added by qt3to4:
+#include <QLabel>
+#include <Q3Frame>
 
 class PropertiesD : public QDialog
 {
   Q_OBJECT
 
     public:
-  PropertiesD( CarteNavale * carte, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+  PropertiesD( CarteNavale * carte, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
   ~PropertiesD();
 
 
@@ -17,12 +20,12 @@ class PropertiesD : public QDialog
   QPushButton ** Position;
   QPushButton* Appliquer;
 
-  QGroupBox* Orientation;
+  Q3GroupBox* Orientation;
 
   QRadioButton* Vertical;
   QRadioButton* Horizontal;
 
-  QFrame* frame_Pos;
+  Q3Frame* frame_Pos;
   QLineEdit* Pos;
   QComboBox* Type;
 

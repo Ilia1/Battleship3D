@@ -41,8 +41,8 @@ using namespace std;
 // Chargement des librairies qt
 #include <qgl.h>
 #include <qcursor.h>    
-#include <qpopupmenu.h>  
-#include <qkeycode.h>   
+#include <q3popupmenu.h>  
+#include <qnamespace.h>   
 #include <qvariant.h>  
 #include <qdialog.h>    
 #include <qpoint.h>     
@@ -50,23 +50,23 @@ using namespace std;
 #include <qcombobox.h>   
 #include <qpushbutton.h>  
 #include <qradiobutton.h>  
-#include <qframe.h>    
-#include <qgroupbox.h>  
+#include <q3frame.h>    
+#include <q3groupbox.h>  
 #include <qlabel.h>    
 #include <qlayout.h>   
 #include <qtooltip.h>   
-#include <qwhatsthis.h>   
+#include <q3whatsthis.h>   
 #include <qimage.h>    
 #include <qpixmap.h>   
 #include <qapplication.h>  
 #include <qmessagebox.h>   
-#include <qtoolbar.h>   
+#include <q3toolbar.h>   
 #include <qtoolbutton.h>  
 #include <qstatusbar.h> 
 #include <qmenubar.h>
-#include <qmainwindow.h>
+#include <q3mainwindow.h>
 #include <qwidget.h>
-#include <qfiledialog.h>
+#include <q3filedialog.h>
 
 
 

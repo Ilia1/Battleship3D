@@ -1,4 +1,9 @@
 #include "headers.h"
+//Added by qt3to4:
+#include <QTimerEvent>
+#include <QKeyEvent>
+#include <Q3PopupMenu>
+#include <QMouseEvent>
 
 /**
  * @fn  Graphique::Graphique( void )
@@ -9,7 +14,7 @@
  * @exception
  *
  */
-Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , QMainWindow * fenetreP)
+Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q3MainWindow * fenetreP)
   : QGLWidget( parent, name )
 {
 #ifdef DBG_MODE
@@ -38,7 +43,7 @@ Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q
    
   CameraGlobale = new ClasseCamera(leModele->GetSky());
   // Permettre a l'usager d'utiliser le clavier dans la fenetre graphique
-  setFocusPolicy( QWidget::StrongFocus );
+  setFocusPolicy( Qt::StrongFocus );
 
   // Initialiser la Camera
   CameraGlobale->mode = 1;
@@ -52,7 +57,7 @@ Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q
 
 
   // Construire le menu popup
-  menuPopup = new QPopupMenu();
+  menuPopup = new Q3PopupMenu();
   menuPopup->insertItem( "&Deplacer", this, SLOT( Deplacer_Objet() ), 0, 1 );
   menuPopup->insertItem( "&Eliminer", this, SLOT( Delete_Objet() ), 0, 2 );
   menuPopup->insertItem( "&Proprietes...", this, SLOT( slotProprietes() ), 0, 3 );
@@ -349,15 +354,15 @@ void Graphique::mousePressEvent( QMouseEvent* ev )
 	      if( leModele->GetSelectedObject() == NULL ) return;
 	      if( leModele->GetSelectedObject()->Edition() )
 		{
-		  if(ev->button() == MidButton)
+		  if(ev->button() == Qt::MidButton)
 		    leModele->GetSelectedObject()->MouseReleaseEvent1(this, ev->x(), ev->y());
-		  else if (ev->button() == LeftButton)
+		  else if (ev->button() == Qt::LeftButton)
 		    leModele->GetSelectedObject()->MouseReleaseEvent2(this);
 		}
 	      else
 		{
 		  PriseEnChargeMouseEdit(ev);
-		  if(ev->button() == RightButton)
+		  if(ev->button() == Qt::RightButton)
 		    menuPopup->exec( QCursor::pos() );
 		}
 	    }
@@ -458,7 +463,7 @@ void Graphique::keyPressEvent( QKeyEvent* ev )
 	
       if (Edit)
 	{
-	  if(ev->key() == Key_Return)
+	  if(ev->key() == Qt::Key_Return)
 	    {
 	      return;
 	    }
@@ -477,7 +482,7 @@ void Graphique::keyPressEvent( QKeyEvent* ev )
         }
 	
     }
-  if ( ev->key() == Key_Space)
+  if ( ev->key() == Qt::Key_Space)
     pause = !pause;
 }
 
@@ -485,7 +490,7 @@ bool Graphique::PriseEnChargeKeys(QKeyEvent* ev)
 {
   switch( ev->key() )
     {
-    case Key_Right:
+    case Qt::Key_Right:
       //      cout << "right" << endl;
       if (int(CameraGlobale->mode) == 0)
 	CameraGlobale->Deplacer(2, 0.5f);
@@ -497,7 +502,7 @@ bool Graphique::PriseEnChargeKeys(QKeyEvent* ev)
 	    CameraGlobale->DeplacerOrigine(2, 0.05f);
 	}
       return true;
-    case Key_Left:
+    case Qt::Key_Left:
       //      cout << "left" << endl;
       if (CameraGlobale->mode == 0)
 	CameraGlobale->Deplacer(4, 0.5f);
@@ -509,7 +514,7 @@ bool Graphique::PriseEnChargeKeys(QKeyEvent* ev)
 	    CameraGlobale->DeplacerOrigine(4, 0.05f);
 	}
       return true;
-    case Key_Down:
+    case Qt::Key_Down:
       //      cout << "down" << endl;
       if (CameraGlobale->mode == 0)
 	CameraGlobale->Deplacer(3, 0.5f);
@@ -521,7 +526,7 @@ bool Graphique::PriseEnChargeKeys(QKeyEvent* ev)
 	    CameraGlobale->DeplacerOrigine(3, 0.05f);
 	}
       return true;
-    case Key_Up:
+    case Qt::Key_Up:
       //      cout << "up" << endl;
       if (CameraGlobale->mode == 0)
 	CameraGlobale->Deplacer(1, 0.5f);
@@ -533,8 +538,8 @@ bool Graphique::PriseEnChargeKeys(QKeyEvent* ev)
 	    CameraGlobale->DeplacerOrigine(1, 0.05f);
 	}
       return true;
-    case Key_Plus:
-    case Key_Equal:
+    case Qt::Key_Plus:
+    case Qt::Key_Equal:
       //      cout << "zoomin" << endl;
       if (CameraGlobale->mode == 0)
 	CameraGlobale->Deplacer(5, 0.5f);
@@ -546,8 +551,8 @@ bool Graphique::PriseEnChargeKeys(QKeyEvent* ev)
 	    CameraGlobale->AvancerVersVue(0.05f);
 	}
       return true;
-    case Key_Minus:
-    case Key_Underscore:
+    case Qt::Key_Minus:
+    case Qt::Key_Underscore:
       //      cout << "zoomout" << endl;
       if (CameraGlobale->mode == 0)
 	CameraGlobale->Deplacer(6, 0.5f);
@@ -559,12 +564,12 @@ bool Graphique::PriseEnChargeKeys(QKeyEvent* ev)
 	    CameraGlobale->AvancerVersVue(-0.05f);
 	}
       return true;
-    case Key_T:
+    case Qt::Key_T:
       if(tempsincr <= 5.0f)
 	tempsincr += 0.005f;
       leModele->GetText()->addText("Temps acceleree", 0);
       break;
-    case Key_R:
+    case Qt::Key_R:
       if(tempsincr >= 0.0025f)
 	tempsincr -= 0.0025f;
       leModele->GetText()->addText("Temps ralenti", 0);
@@ -582,31 +587,31 @@ bool Graphique::PriseEnChargeKeys(QKeyEvent* ev)
 	CameraGlobale->Refresh();
 	return true;*/
 
-    case Key_F:
+    case Qt::Key_F:
       leModele->AugmenterGamma();
       break;
-    case Key_G:
+    case Qt::Key_G:
       leModele->DiminuerGamma();
       break;
-    case Key_J:
+    case Qt::Key_J:
       leModele->AugmenterDetail();
       break;
-    case Key_K:
+    case Qt::Key_K:
       leModele->DiminuerDetail();
       break;
       
-    case Key_W:
+    case Qt::Key_W:
       cout << "\nSaving...";
       Write();
       cout << "\nSave completed\n";
       break;
-    case Key_L:
+    case Qt::Key_L:
       cout << "\nLoading...";
       Read();
       cout << "\nLoad completed\n";
       break;
 
-    case Key_E:
+    case Qt::Key_E:
       cout << "checking error...\n";
       GLenum error;
       error = glGetError();
@@ -614,14 +619,14 @@ bool Graphique::PriseEnChargeKeys(QKeyEvent* ev)
 	cout << "got error : " << gluErrorString(error) << endl;
       break;
 
-    case Key_I:
+    case Qt::Key_I:
       cout << *leModele;
       CameraGlobale->Afficher();
       return true;
-    case Key_Greater:
+    case Qt::Key_Greater:
       temps += 5;
       return true;
-    case Key_Less:
+    case Qt::Key_Less:
       temps -= 5;
       return true;
       /*case Key_t:
@@ -640,10 +645,10 @@ bool Graphique::PriseEnChargeKeysEdition(QKeyEvent * ev)
     return false;
   switch(ev->key())
     {
-    case Key_BracketLeft:
+    case Qt::Key_BracketLeft:
       leModele->GetSelectedObject()->DiminuerTaille(leModele);
       return true;
-    case Key_BracketRight:
+    case Qt::Key_BracketRight:
       leModele->GetSelectedObject()->AugmenterTaille(leModele);
       return true;
     }
@@ -676,12 +681,12 @@ bool Graphique::PriseEnChargeKeysEdit(QKeyEvent * ev)
 	case Key_Delete:
 	leModele->DeleteObject();
 	return true;*/
-    case Key_ParenRight:
-    case Key_0:
+    case Qt::Key_ParenRight:
+    case Qt::Key_0:
       leModele->NextObject();
       return true;
-    case Key_ParenLeft:
-    case Key_9:
+    case Qt::Key_ParenLeft:
+    case Qt::Key_9:
       leModele->PreviousObject();
       return true;
     }
@@ -743,7 +748,7 @@ void Graphique::PriseEnChargeMouseEdit(QMouseEvent * ev)
       menuPopup->setItemEnabled( 2, true );
       menuPopup->setItemEnabled( 3, true );
 
-      if(leModele->GetObjet(Objet)->GetSelect() && ev->button() == LeftButton)
+      if(leModele->GetObjet(Objet)->GetSelect() && ev->button() == Qt::LeftButton)
 	{
 	  leModele->GetSelectedObject()->Edit();
 	  leModele->RefreshBoats();

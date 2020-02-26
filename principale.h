@@ -6,6 +6,8 @@
 #define _PRINCIPALE_H_
 
 #include "headers.h"
+//Added by qt3to4:
+#include <Q3PopupMenu>
 
 class Principale : public QWidget
 {
@@ -13,7 +15,7 @@ class Principale : public QWidget
     public:
   Principale( void );
   ~Principale();
-  QMainWindow* getFenetrePrincipale( void ) { return fenetrePrincipale; };
+  Q3MainWindow* getFenetrePrincipale( void ) { return fenetrePrincipale; };
 	   
   private slots:
     void slotNouveau();
@@ -36,13 +38,13 @@ class Principale : public QWidget
 
 
  protected:
-  QMainWindow* fenetrePrincipale;
-  QPopupMenu* menuFichier;
-  QPopupMenu* menuEditer;
-  QPopupMenu* menuAide;
-  QPopupMenu* menuEdition;
-  QPopupMenu* menuCamera;
-  QPopupMenu* menuJouer;
+  Q3MainWindow* fenetrePrincipale;
+  Q3PopupMenu* menuFichier;
+  Q3PopupMenu* menuEditer;
+  Q3PopupMenu* menuAide;
+  Q3PopupMenu* menuEdition;
+  Q3PopupMenu* menuCamera;
+  Q3PopupMenu* menuJouer;
   QToolButton* bouton11;
   QToolButton* bouton12;
   QToolButton* bouton13;

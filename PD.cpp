@@ -16,6 +16,10 @@
 #include "./images/icon4.xpm"
 #include "./images/icon5.xpm"
 #include "./images/cam1.xpm"
+//Added by qt3to4:
+#include <Q3Frame>
+#include <QPixmap>
+#include <QLabel>
 
 /* 
  *  Constructs a PD as a child of 'parent', with the 
@@ -24,7 +28,7 @@
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
-PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bool modal, WFlags fl )
+PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bool modal, Qt::WFlags fl )
   : QDialog( parent, name, modal, fl )
 
 {
@@ -37,7 +41,7 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   if ( !name )
     setName( "Properties Dialog" );
 
-  Appliquer = new QPushButton( this, "Fermer" );
+  Appliquer = new QPushButton( this, CLOSE );
   Appliquer->setGeometry( QRect( 120, 520, 100, 40 ) );
   Appliquer->setDefault( TRUE );
 
@@ -52,23 +56,23 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   type_label = new QLabel( this, "type_label" );
   type_label->setGeometry( QRect( 130, 20, 181, 21 ) );
 
-  Orientation = new QGroupBox( this, "Orientation" );
+  Orientation = new Q3GroupBox( this, "Orientation" );
   Orientation->setGeometry( QRect( 20, 120, 291, 50 ) );
 
-  Vertical = new QRadioButton( Orientation, "Vertical" );
+  Vertical = new QRadioButton( Orientation, VERTICAL );
   Vertical->setGeometry( QRect( 150, 20, 111, 20 ) );
 
-  Horizontal = new QRadioButton( Orientation, "Horizontal" );
+  Horizontal = new QRadioButton( Orientation, HORIZONTAL );
   Horizontal->setGeometry( QRect( 30, 20, 111, 21 ) );
   Horizontal->setChecked( FALSE );
 
   Position_label = new QLabel( this, "Position" );
   Position_label->setGeometry( QRect( 70, 220, 221, 16 ) );
 
-  frame_Pos = new QFrame( this, "frame_Pos" );
+  frame_Pos = new Q3Frame( this, "frame_Pos" );
   frame_Pos->setGeometry( QRect( 60, 240, 240, 260 ) );
-  frame_Pos->setFrameShape( QFrame::StyledPanel );
-  frame_Pos->setFrameShadow( QFrame::Raised );
+  frame_Pos->setFrameShape( Q3Frame::StyledPanel );
+  frame_Pos->setFrameShadow( Q3Frame::Raised );
 
   Pos = new QLineEdit( frame_Pos, "Pos" );
   Pos->setGeometry( QRect( 10, 230, 201, 21 ) );
