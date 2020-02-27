@@ -1,0 +1,22 @@
+Battleship3D
+=================
+How to use the program:
+-----------------------
+
+The Tux Battleship 3D program is a naval battle game under Linux. Its use is quite simple and several keyboard shortcuts allow quick access to certain features.
+
+1. **Move around the virtual world of the game:**  
+Once the program has started, you can move around the virtual world using the different camera modes. You have to use the arrow keys and the "+" (plus) and "-" (minus) keys to manipulate the different camera modes. To choose your camera mode you can use the menu, the toolbar or the keyboard shortcuts:
+S -> First person view. The arrows on the keyboard allow you to change the direction in which you direct your gaze and the +/- keys allow you to move forward and backward respectively.
+P -> Centered view. This camera mode has a view centered on the middle of the map (a point between your playing card and that of your opponent). The arrows on the keyboard make it possible to orbit around this point, by moving on an invisible sphere while the +/- keys allow respectively to approach or to move away from the central point. ("zoom" function).
+H -> 2-dimensional view. This camera mode places you at the top of the game card, having a view perpendicular to the scene. The arrows on the keyboard allow you to move around your world while remaining perpendicular to sea level while the +/- keys allow you to vary the altitude at which the camera is located (the + key signifying a decrease in l 'altitude).
+
+2. **The Game:**  
+This game contains two modes: an Edit mode and Game mode. The edit mode allowing you to place your boats on your map and the game mode allowing you to compete against an opponent (in our case, the computer artificial intelligence) and seek victory.
+
+   1. **Edit mode:**
+At start-up, the game is in Edit mode and you have to place your boats on your map. For this, five types of boats are available to you: a destroyer, a submarine, a cruiser, a battleship and an aircraft carrier. To be able to play, you must have placed at least one boat of each type for a total of at least five boats. To place a boat, you must first create it using the icons available in the toolbar or from the "Edit" -> "Add a boat" menu with one of the keys 1, 2, 3, 4 or 5 on your keyboard (a number corresponding respectively to a type of boat mentioned above). Once the boat is created, it will follow the cursor of your mouse (without exceeding the limits of your game card), and a click of the left button allows you to place a boat on the box above which the cursor is located. To rotate your boat 90 °, just click on the middle button of your mouse. A second click on this button puts the boat back in its original direction. When you have placed your first boat, you will notice that it will be impossible for you to place a second boat on a space adjacent to the first. Indeed, a rule of the game is that each boat must be separated from another by at least one space, this in order to avoid a concentration of boats in the same neighborhood. You can change the properties of a boat interactively from a dialog window by choosing "Properties" from the context menu of the boat. The latter is accessible by right clicking your mouse on the boat of your choice. You can also modify the properties of your boats using keyboard shortcuts. The keys "9" and "0" on your keyboard allow you respectively to decrease and increase the size of your selected boat (modification of the type of boat). To select a different boat (usually the last placed), simply click on a boat to select it. The keyboard shortcuts "[" and "]" also allow to change the selected boat, "[" allowing to pass to the preceding boat (according to the creation order) while "]" allows to pass to the following boat.
+When you have finished placing your boats, you can press the "Play" -> "Play" menu item or by pressing the "Enter" key on your keyboard. If you have not placed all of your boats, a message will appear to tell you which boats are missing from your fleet. Otherwise, you will enter Game mode.
+
+   2. **Game Mode:**
+In Game mode, certain menus ("Edit" and "Play") as well as certain icons in the toolbar (Boats) will now be disabled. The part then consists in discovering the fleet of the adversary and in sinking it. At the start of the game, the opponent also placed the same number of boats as you for each of the available boat types, completely randomly on his card. You will start the game, and you will have to click on the boxes
