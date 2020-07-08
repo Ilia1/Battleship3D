@@ -50,7 +50,7 @@ using namespace std;
 #include <qcombobox.h>   
 #include <qpushbutton.h>  
 #include <qradiobutton.h>
-#include <q3groupbox.h>      
+#include <QGroupBox>      
 #include <qlayout.h>   
 #include <qtooltip.h>   
 #include <QWhatsThis>   
