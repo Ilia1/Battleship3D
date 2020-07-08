@@ -63,7 +63,7 @@ using namespace std;
 #include <qmenubar.h>
 #include <q3mainwindow.h>
 #include <qwidget.h>
-#include <q3filedialog.h>
+#include <QFileDialog>
 #include <QMouseEvent>
 #include <QFrame>
 #include <QPixmap>

@@ -343,7 +343,7 @@ void Principale::slotLire( void )
  
 
   // Une fenetre d'ouverture de fichier apparait et retourne le nom du fichier selectione
-  QString s = Q3FileDialog::getOpenFileName(
+  QString s = QFileDialog::getOpenFileName(
 					   "./",
 					   "Save files (*.sav)",
 					   this,
@@ -383,7 +383,7 @@ void Principale::slotSave( void )
     {
 
       // Demande le nom du fichier pour la sauvegarde
-      QString s = Q3FileDialog::getSaveFileName(
+      QString s = QFileDialog::getSaveFileName(
 					       "./",
 					       "Save files (*.sav)",
 					       this,
@@ -423,7 +423,7 @@ void Principale::slotSaveAs( void )
 {
     
   // Demande le nom du fichier pour la sauvegarde
-  QString s = Q3FileDialog::getSaveFileName(
+  QString s = QFileDialog::getSaveFileName(
 					   "./",
 					   "Save files (*.sav)",
 					   this,
