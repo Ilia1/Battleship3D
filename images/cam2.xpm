@@ -1,5 +1,5 @@
 /* XPM */
-static char * cam2_xpm[] = {
+static const char * cam2_xpm[] = {
 "34 28 585 2",
 "  	c None",
 ". 	c #1C70AE",
