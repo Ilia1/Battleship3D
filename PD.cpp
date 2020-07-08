@@ -16,10 +16,6 @@
 #include "./images/icon4.xpm"
 #include "./images/icon5.xpm"
 #include "./images/cam1.xpm"
-//Added by qt3to4:
-#include <Q3Frame>
-#include <QPixmap>
-#include <QLabel>
 
 /* 
  *  Constructs a PD as a child of 'parent', with the 
@@ -56,7 +52,7 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   type_label = new QLabel( this, "type_label" );
   type_label->setGeometry( QRect( 130, 20, 181, 21 ) );
 
-  Orientation = new Q3GroupBox( this, "Orientation" );
+  Orientation = new QGroupBox( this, "Orientation" );
   Orientation->setGeometry( QRect( 20, 120, 291, 50 ) );
 
   Vertical = new QRadioButton( Orientation, VERTICAL );
@@ -69,10 +65,10 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   Position_label = new QLabel( this, "Position" );
   Position_label->setGeometry( QRect( 70, 220, 221, 16 ) );
 
-  frame_Pos = new Q3Frame( this, "frame_Pos" );
+  frame_Pos = new QFrame( this, "frame_Pos" );
   frame_Pos->setGeometry( QRect( 60, 240, 240, 260 ) );
-  frame_Pos->setFrameShape( Q3Frame::StyledPanel );
-  frame_Pos->setFrameShadow( Q3Frame::Raised );
+  frame_Pos->setFrameShape( QFrame::StyledPanel );
+  frame_Pos->setFrameShadow( QFrame::Raised );
 
   Pos = new QLineEdit( frame_Pos, "Pos" );
   Pos->setGeometry( QRect( 10, 230, 201, 21 ) );

@@ -3,8 +3,6 @@
 
 
 #include "headers.h"
-//Added by qt3to4:
-#include <QMouseEvent>
 
 
 class Bateau : public Objet

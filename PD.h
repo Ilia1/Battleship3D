@@ -4,7 +4,7 @@
 #include "headers.h"
 //Added by qt3to4:
 #include <QLabel>
-#include <Q3Frame>
+#include <QFrame>
 
 class PropertiesD : public QDialog
 {
@@ -20,12 +20,12 @@ class PropertiesD : public QDialog
   QPushButton ** Position;
   QPushButton* Appliquer;
 
-  Q3GroupBox* Orientation;
+  QGroupBox* Orientation;
 
   QRadioButton* Vertical;
   QRadioButton* Horizontal;
 
-  Q3Frame* frame_Pos;
+  QFrame* frame_Pos;
   QLineEdit* Pos;
   QComboBox* Type;
 

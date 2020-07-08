@@ -1,6 +1,5 @@
 #include "headers.h"
-//Added by qt3to4:
-#include <QMouseEvent>
+
 
 
 int Bateau::static_id = 200;

@@ -471,9 +471,9 @@ bool CarteNavale::VerifierGagnant()
   
   
   if(Ennemi)
-    Messages->addText("Vous avez GAGNE!!", 1);
+    Messages->addText("You have won!!", 1);
   else
-    Messages->addText("Vous avez PERDU!!", 1);
+    Messages->addText("You lost!!", 1);
 
 
   return true;

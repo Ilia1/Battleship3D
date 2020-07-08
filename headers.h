@@ -44,20 +44,17 @@ using namespace std;
 #include <q3popupmenu.h>  
 #include <qnamespace.h>   
 #include <qvariant.h>  
-#include <qdialog.h>    
-#include <qpoint.h>     
+#include <qdialog.h>
+#include <qpoint.h>
 #include <qlineedit.h>   
 #include <qcombobox.h>   
 #include <qpushbutton.h>  
-#include <qradiobutton.h>  
-#include <q3frame.h>    
-#include <q3groupbox.h>  
-#include <qlabel.h>    
+#include <qradiobutton.h>
+#include <q3groupbox.h>      
 #include <qlayout.h>   
 #include <qtooltip.h>   
 #include <q3whatsthis.h>   
-#include <qimage.h>    
-#include <qpixmap.h>   
+#include <qimage.h>   
 #include <qapplication.h>  
 #include <qmessagebox.h>   
 #include <q3toolbar.h>   
@@ -67,7 +64,10 @@ using namespace std;
 #include <q3mainwindow.h>
 #include <qwidget.h>
 #include <q3filedialog.h>
-
+#include <QMouseEvent>
+#include <QFrame>
+#include <QPixmap>
+#include <QLabel>
 
 
 

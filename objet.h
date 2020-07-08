@@ -2,8 +2,6 @@
 #define _HEADER_OBJET_H_
 
 #include "headers.h"
-//Added by qt3to4:
-#include <QMouseEvent>
 
 
 class Objet
