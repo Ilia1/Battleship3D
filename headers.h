@@ -53,8 +53,8 @@ using namespace std;
 #include <q3groupbox.h>      
 #include <qlayout.h>   
 #include <qtooltip.h>   
-#include <q3whatsthis.h>   
-#include <qimage.h>   
+#include <QWhatsThis>   
+#include <qimage.h>  
 #include <qapplication.h>  
 #include <qmessagebox.h>   
 #include <q3toolbar.h>   
