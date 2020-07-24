@@ -44,4 +44,4 @@ SOURCES += 3ds.cpp \
            transf.C \
            tree.C
 #The following line was inserted by qt3to4
-QT +=  opengl qt3support 
+QT +=  opengl 

@@ -41,7 +41,8 @@ using namespace std;
 // Chargement des librairies qt
 #include <qgl.h>
 #include <qcursor.h>    
-#include <q3popupmenu.h>  
+#include <QMenu>
+//#include <q3popupmenu.h>  
 #include <qnamespace.h>   
 #include <qvariant.h>  
 #include <qdialog.h>
@@ -57,17 +58,19 @@ using namespace std;
 #include <qimage.h>  
 #include <qapplication.h>  
 #include <qmessagebox.h>   
-#include <q3toolbar.h>   
-#include <qtoolbutton.h>  
+#include <QToolBar>   
+#include <QToolButton>  
 #include <qstatusbar.h> 
-#include <qmenubar.h>
-#include <q3mainwindow.h>
+#include <QMenuBar>
+#include <QMainWindow>
 #include <qwidget.h>
 #include <QFileDialog>
 #include <QMouseEvent>
 #include <QFrame>
 #include <QPixmap>
 #include <QLabel>
+#include <QAction>
+#include <QIcon>
 
 
 

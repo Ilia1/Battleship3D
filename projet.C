@@ -43,7 +43,7 @@ int main( int argc, char **argv )
 #endif
 
   Principale* principale = new Principale;
-  Q3MainWindow* fenetrePrincipale = principale->getFenetrePrincipale();
+  QMainWindow* fenetrePrincipale = principale->getFenetrePrincipale();
 
   app.setMainWidget( fenetrePrincipale );
   fenetrePrincipale->show( );

@@ -53,7 +53,7 @@ void ClasseText::afficher(Graphique *graph)
   if ( TimeStart[0] < 2)
     {
       //if (!modee)
-      graph->GetStatus()->message(ListTextes[0], 2500);
+      graph->GetStatus()->showMessage(ListTextes[0], 2500);
       //	else 
       //		graph->GetStatus()->message(ListTextes[0]);
     }

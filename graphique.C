@@ -2,7 +2,7 @@
 //Added by qt3to4:
 #include <QTimerEvent>
 #include <QKeyEvent>
-#include <Q3PopupMenu>
+//#include <Q3PopupMenu>
 #include <QMouseEvent>
 
 /**
@@ -14,7 +14,7 @@
  * @exception
  *
  */
-Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q3MainWindow * fenetreP)
+Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , QMainWindow * fenetreP)
   : QGLWidget( parent, name )
 {
 #ifdef DBG_MODE
@@ -57,7 +57,7 @@ Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q
 
 
   // Construire le menu popup
-  menuPopup = new Q3PopupMenu();
+  menuPopup = new QMenu();
   menuPopup->insertItem( "&Deplacer", this, SLOT( Deplacer_Objet() ), 0, 1 );
   menuPopup->insertItem( "&Eliminer", this, SLOT( Delete_Objet() ), 0, 2 );
   menuPopup->insertItem( "&Proprietes...", this, SLOT( slotProprietes() ), 0, 3 );
@@ -744,9 +744,9 @@ void Graphique::PriseEnChargeMouseEdit(QMouseEvent * ev)
 
   if(Objet > 200 && Objet < 500)
     {
-      menuPopup->setItemEnabled( 1, true );
-      menuPopup->setItemEnabled( 2, true );
-      menuPopup->setItemEnabled( 3, true );
+      menuPopup->setItemEnabled(1, true );
+      menuPopup->setItemEnabled(2, true );
+      menuPopup->setItemEnabled(3, true );
 
       if(leModele->GetObjet(Objet)->GetSelect() && ev->button() == Qt::LeftButton)
 	{
@@ -761,9 +761,9 @@ void Graphique::PriseEnChargeMouseEdit(QMouseEvent * ev)
           leModele->GetObjet(Objet)->Selected();
         }
     } else {
-      menuPopup->setItemEnabled( 1, false );
-      menuPopup->setItemEnabled( 2, false );
-      menuPopup->setItemEnabled( 3, false );
+      menuPopup->setItemEnabled(1, false );
+      menuPopup->setItemEnabled(2, false );
+      menuPopup->setItemEnabled(3, false );
     }
 }
 

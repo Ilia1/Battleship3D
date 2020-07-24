@@ -20,8 +20,8 @@
 #include "./images/cam3.xpm"
 //Added by qt3to4:
 #include <QPixmap>
-#include <Q3PopupMenu>
-
+//#include <Q3PopupMenu>
+#include <QMenuBar>
 /*---------------------------------------------------------------------------
  * FONCTION: Principale
  * CLASSE  : Principale
@@ -64,7 +64,7 @@ Principale::Principale( void )
   cout << "Creation d'une nouvelle fenetre\n";
 #endif
   // Creer une fenetre principale
-  fenetrePrincipale = new Q3MainWindow;
+  fenetrePrincipale = new QMainWindow;
 #ifdef DBG_MODE
   cout << "Fin Creation d'une nouvelle fenetre\n" << &fenetrePrincipale;
 #endif
@@ -130,8 +130,8 @@ Principale::Principale( void )
 
   // Creer trois menus
   // Menu Fichier:
-  menuFichier = new Q3PopupMenu;
-  menuFichier->insertItem( newIcon, NEW, this, SLOT(slotNouveau()), Qt::CTRL+Qt::Key_N);
+  menuFichier = new QMenu;
+  menuFichier->addAction( newIcon, NEW, this, SLOT(slotNouveau()), Qt::CTRL+Qt::Key_N);
   menuFichier->insertItem( openIcon, READ, this, SLOT(slotLire()), Qt::CTRL+Qt::Key_L );
   menuFichier->insertSeparator();
   menuFichier->insertItem( saveIcon, SAVE, this, SLOT(slotSave()), Qt::CTRL+Qt::Key_S );
@@ -143,15 +143,15 @@ Principale::Principale( void )
 #endif
 
   // Menu Aide:
-  menuAide = new Q3PopupMenu;
-  menuAide->insertItem( "&About tp2" );
+  menuAide = new QMenu;
+  menuAide->addAction( "&About tp2" );
   menuAide->insertItem( "About &Qt", this, SLOT( slotAproposQt() ) );
 #ifdef USE_SKIN
   menuAide->setPalette( p, TRUE );
 #endif
 
   // Menu Ajout de bateau
-  Q3PopupMenu * bateaux = new Q3PopupMenu;
+  QMenu * bateaux = new QMenu;
   bateaux->insertItem(boat1, BAT1, this, SLOT(Nv_Bat1()), Qt::Key_1);
   bateaux->insertItem(boat2, BAT2, this, SLOT(Nv_Bat2()), Qt::Key_2);
   bateaux->insertItem(boat3, BAT3, this, SLOT(Nv_Bat3()), Qt::Key_3);
@@ -162,7 +162,7 @@ Principale::Principale( void )
 #endif
     
   // Menu Edition:
-  menuEdition = new Q3PopupMenu;
+  menuEdition = new QMenu;
   menuEdition->insertItem(ADD_BOAT, bateaux);
   menuEdition->insertItem(x, ELIMINATE, graphique, SLOT(Delete_Objet()), Qt::Key_Delete);
   menuEdition->insertSeparator();
@@ -172,17 +172,17 @@ Principale::Principale( void )
 #endif
 
   //Menu Jouer:
-  menuJouer = new Q3PopupMenu;
+  menuJouer = new QMenu;
   menuJouer->insertItem(TO_PLAY, this, SLOT(CommencerJeu()), Qt::Key_Return);
 #ifdef USE_SKIN
   menuJouer->setPalette( p, TRUE );
 #endif
 
   // Menu Camera:
-  menuCamera = new Q3PopupMenu;
-  menuCamera->insertItem(cam1, "&Camera 2D", this, SLOT(Cam_Mode1()), Qt::Key_H);
-  menuCamera->insertItem(cam2, "&Orbit in 3D", this, SLOT(Cam_Mode2()), Qt::Key_P);
-  menuCamera->insertItem(cam3, "&Free in 3D", this, SLOT(Cam_Mode3()), Qt::Key_S);
+  menuCamera = new QMenu;
+  menuCamera->addAction(cam1, "&Camera 2D", this, SLOT(Cam_Mode1()), Qt::Key_H);
+  menuCamera->addAction(cam2, "&Orbit in 3D", this, SLOT(Cam_Mode2()), Qt::Key_P);
+  menuCamera->addAction(cam3, "&Free in 3D", this, SLOT(Cam_Mode3()), Qt::Key_S);
 #ifdef USE_SKIN
   menuCamera->setPalette( p, TRUE );
 #endif
@@ -211,58 +211,45 @@ Principale::Principale( void )
   barreMenu->insertItem( "&Help", menuAide );
 
   // Barre d'outils
-  Q3ToolBar* barreOutils = new Q3ToolBar( fenetrePrincipale, MAIN_DUTIES );
+  QToolBar* barreOutils = new QToolBar( fenetrePrincipale, MAIN_DUTIES );
   barreOutils->setLabel( MAIN_DUTIES );
 
-  QToolButton* bouton1;
-  bouton1 = new QToolButton(newIcon, NEW_PART, QString::null,
-			    this, SLOT(slotNouveau()), barreOutils);
-  QToolButton* bouton2;
-  bouton2 = new QToolButton(openIcon, LOAD_GAME, QString::null,
-			    this, SLOT(slotLire()), barreOutils);
-  QToolButton* bouton3;
-  bouton3= new QToolButton(saveIcon, SAVE_GAME, QString::null,
-                           this, SLOT(slotSave()), barreOutils);
+//  QToolButton* bouton1;
+  barreOutils->addAction(newIcon, NEW_PART, this, SLOT(slotNouveau()));
+//  QToolButton* bouton2;
+  barreOutils->addAction(openIcon, LOAD_GAME, this, SLOT(slotLire()));
+//  QToolButton* bouton3;
+  barreOutils->addAction(saveIcon, SAVE_GAME, this, SLOT(slotSave()));
 
 
-  Q3ToolBar* barreEdition;
-  barreEdition  = new Q3ToolBar( fenetrePrincipale, ADDITION_OF_BOATS );
+  QToolBar* barreEdition;
+  barreEdition  = new QToolBar( fenetrePrincipale, ADDITION_OF_BOATS );
   barreEdition->setLabel( ADDITION_OF_BOATS );
 
 
-  bouton11 = new QToolButton(boat1, BAT1, QString::null,
-			     this, SLOT(Nv_Bat1()), barreEdition);
+  barreEdition->addAction(boat1, BAT1, this, SLOT(Nv_Bat1()));
 
-  bouton12 = new QToolButton(boat2, BAT2, QString::null,
-			     this, SLOT(Nv_Bat2()), barreEdition);
+  barreEdition->addAction(boat2, BAT2, this, SLOT(Nv_Bat2()));
 
-  bouton13 = new QToolButton(boat3, BAT3, QString::null,
-			     this, SLOT(Nv_Bat3()), barreEdition);
+  barreEdition->addAction(boat3, BAT3, this, SLOT(Nv_Bat3()));
 
-  bouton14  = new QToolButton(boat4, BAT4, QString::null,
-			      this, SLOT(Nv_Bat4()), barreEdition);
+  barreEdition->addAction(boat4, BAT4, this, SLOT(Nv_Bat4()));
 
-  bouton15 = new QToolButton(boat5, BAT5, QString::null,
-			     this, SLOT(Nv_Bat5()), barreEdition);
+  barreEdition->addAction(boat5, BAT5, this, SLOT(Nv_Bat5()));
 
-  bouton16 = new QToolButton(x, CLEAR_BOAT, QString::null,
-			     this, SLOT(Delete_Objet()), barreEdition);
+  barreEdition->addAction(x, CLEAR_BOAT, this, SLOT(Delete_Objet()));
 
-  bouton17 = new QToolButton(prop, BOAT_PROPERTIES, QString::null,
-			     graphique, SLOT(slotProprietes()), barreEdition);
+  barreEdition->addAction(prop, BOAT_PROPERTIES, graphique, SLOT(slotProprietes()));
 
-  Q3ToolBar* barreCam = new Q3ToolBar( fenetrePrincipale, "Mode de Camera" );
-  barreCam->setLabel( "Mode de Camera" );
+  QToolBar* barreCam = new QToolBar( fenetrePrincipale, "Camera mode" );
+  barreCam->setLabel( "Camera mode" );
 
-  QToolButton* camera1;
-  camera1 = new QToolButton(cam1, "Mode 2D", QString::null,
-			    this, SLOT(Cam_Mode1()), barreCam);
-  QToolButton* camera2;
-  camera2 = new QToolButton(cam2, "Mode 3D sur Sphere", QString::null,
-			    this, SLOT(Cam_Mode2()), barreCam);
-  QToolButton* camera3;
-  camera3 = new QToolButton(cam3, "Mode 3D Libre", QString::null,
-			    this, SLOT(Cam_Mode3()), barreCam);
+//  QToolButton* camera1;
+  barreCam->addAction(cam1, "Mode 2D", this, SLOT(Cam_Mode1()));
+//  QToolButton* camera2;
+  barreCam->addAction(cam2, "Mode 3D sur Sphere", this, SLOT(Cam_Mode2()));
+//  QToolButton* camera3;
+  barreCam->addAction(cam3, "Mode 3D Libre", this, SLOT(Cam_Mode3()));
 
   fenetrePrincipale->setCaption(QString("TuxBattleship 3d "));
 
@@ -676,9 +663,9 @@ void Principale::CommencerJeu()
 void Principale::UpdateButtons()
 {
   // Si on est en mode d'edition, activation les menus et les boutons de la barre d'outil
-  if(graphique->GetEdit())
+/*  if(graphique->GetEdit())
     {
-      bouton11->setEnabled(true);
+      bouton11->setEnabled( true);
       bouton12->setEnabled(true);
       bouton13->setEnabled(true);
       bouton14->setEnabled(true);
@@ -699,5 +686,5 @@ void Principale::UpdateButtons()
       barreMenu->setItemEnabled(menuEditionID, false);
       barreMenu->setItemEnabled(menuJeuID, false);
       graphique->setMouseTracking(false);
-    }
+    }*/
 }

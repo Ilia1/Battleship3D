@@ -7,15 +7,15 @@
 
 #include "headers.h"
 //Added by qt3to4:
-#include <Q3PopupMenu>
-
+//#include <Q3PopupMenu>
+#include <QMenuBar>
 class Principale : public QWidget
 {
   Q_OBJECT
     public:
   Principale( void );
   ~Principale();
-  Q3MainWindow* getFenetrePrincipale( void ) { return fenetrePrincipale; };
+  QMainWindow* getFenetrePrincipale( void ) { return fenetrePrincipale; };
 	   
   private slots:
     void slotNouveau();
@@ -38,13 +38,14 @@ class Principale : public QWidget
 
 
  protected:
-  Q3MainWindow* fenetrePrincipale;
-  Q3PopupMenu* menuFichier;
-  Q3PopupMenu* menuEditer;
-  Q3PopupMenu* menuAide;
-  Q3PopupMenu* menuEdition;
-  Q3PopupMenu* menuCamera;
-  Q3PopupMenu* menuJouer;
+  QMainWindow* fenetrePrincipale;
+  QMenu* menuFichier;
+  QMenu* menuEditer;
+  QMenu* menuAide;
+  QMenu* menuEdition;
+  QMenu* menuCamera;
+  QMenu* menuJouer;
+   
   QToolButton* bouton11;
   QToolButton* bouton12;
   QToolButton* bouton13;
