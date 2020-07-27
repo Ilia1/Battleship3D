@@ -6,9 +6,7 @@
 #define _PRINCIPALE_H_
 
 #include "headers.h"
-//Added by qt3to4:
-//#include <Q3PopupMenu>
-#include <QMenuBar>
+
 class Principale : public QWidget
 {
   Q_OBJECT

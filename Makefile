@@ -10,13 +10,13 @@
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_OPENGL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
+DEFINES       = -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
 CFLAGS        = -m64 -pipe -O2 -Wall -W -D_REENTRANT $(DEFINES)
 CXXFLAGS      = -m64 -pipe -O2 -Wall -W -D_REENTRANT $(DEFINES)
-INCPATH       = -I/usr/share/qt4/mkspecs/linux-g++-64 -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtOpenGL -I/usr/include/qt4/Qt3Support -I/usr/include/qt4 -I. -I/usr/X11R6/include -I.
+INCPATH       = -I/usr/share/qt4/mkspecs/linux-g++-64 -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtOpenGL -I/usr/include/qt4 -I. -I/usr/X11R6/include -I.
 LINK          = g++
 LFLAGS        = -m64 -Wl,-O1
-LIBS          = $(SUBLIBS)  -L/usr/lib/x86_64-linux-gnu -L/usr/X11R6/lib64 -lQt3Support -lQtOpenGL -lQtGui -lQtCore -lGL -lGLU -lpthread 
+LIBS          = $(SUBLIBS)  -L/usr/lib/x86_64-linux-gnu -L/usr/X11R6/lib64 -lQtOpenGL -lQtGui -lQtCore -lGL -lGLU -lpthread 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /usr/bin/qmake-qt4
@@ -166,7 +166,6 @@ Makefile: Battleship3D.pro  /usr/share/qt4/mkspecs/linux-g++-64/qmake.conf /usr/
 		/usr/share/qt4/mkspecs/features/yacc.prf \
 		/usr/share/qt4/mkspecs/features/lex.prf \
 		/usr/share/qt4/mkspecs/features/include_source_dir.prf \
-		/usr/lib/x86_64-linux-gnu/libQt3Support.prl \
 		/usr/lib/x86_64-linux-gnu/libQtOpenGL.prl \
 		/usr/lib/x86_64-linux-gnu/libQtGui.prl \
 		/usr/lib/x86_64-linux-gnu/libQtCore.prl
@@ -196,7 +195,6 @@ Makefile: Battleship3D.pro  /usr/share/qt4/mkspecs/linux-g++-64/qmake.conf /usr/
 /usr/share/qt4/mkspecs/features/yacc.prf:
 /usr/share/qt4/mkspecs/features/lex.prf:
 /usr/share/qt4/mkspecs/features/include_source_dir.prf:
-/usr/lib/x86_64-linux-gnu/libQt3Support.prl:
 /usr/lib/x86_64-linux-gnu/libQtOpenGL.prl:
 /usr/lib/x86_64-linux-gnu/libQtGui.prl:
 /usr/lib/x86_64-linux-gnu/libQtCore.prl:

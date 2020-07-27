@@ -42,7 +42,7 @@ using namespace std;
 #include <qgl.h>
 #include <qcursor.h>    
 #include <QMenu>
-//#include <q3popupmenu.h>  
+#include <QListWidget>  
 #include <qnamespace.h>   
 #include <qvariant.h>  
 #include <qdialog.h>
@@ -71,7 +71,8 @@ using namespace std;
 #include <QLabel>
 #include <QAction>
 #include <QIcon>
-
+#include <QKeyEvent>
+#include <QTimerEvent>
 
 
 // Declaration des classes

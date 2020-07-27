@@ -2,11 +2,6 @@
 #define _HEADER_GRAPHIQUE_H_
 
 #include "headers.h"
-//Added by qt3to4:
-#include <QMouseEvent>
-#include <QTimerEvent>
-#include <QKeyEvent>
-//#include <Q3PopupMenu>
 
 
 /**

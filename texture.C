@@ -19,7 +19,7 @@ ImageTGA * Textures::LoadTGA(const char *nomfichier)
     {
       QString withdir = "./images/";
       withdir.append(nomfichier);
-      if( (pFile = fopen(withdir, "rb") ) == NULL)
+      if( (pFile = fopen(withdir.toUtf8().constData(), "rb") ) == NULL)
 	{
 	  cout << "erreur d'ouverture du fichier" << endl;
 	  return NULL;

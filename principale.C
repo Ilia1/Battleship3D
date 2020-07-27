@@ -18,10 +18,8 @@
 #include "./images/cam1.xpm"
 #include "./images/cam2.xpm"
 #include "./images/cam3.xpm"
-//Added by qt3to4:
-#include <QPixmap>
-//#include <Q3PopupMenu>
-#include <QMenuBar>
+
+
 /*---------------------------------------------------------------------------
  * FONCTION: Principale
  * CLASSE  : Principale
@@ -130,14 +128,14 @@ Principale::Principale( void )
 
   // Creer trois menus
   // Menu Fichier:
-  menuFichier = new QMenu;
+  menuFichier = new QMenu("file");
   menuFichier->addAction( newIcon, NEW, this, SLOT(slotNouveau()), Qt::CTRL+Qt::Key_N);
-  menuFichier->insertItem( openIcon, READ, this, SLOT(slotLire()), Qt::CTRL+Qt::Key_L );
-  menuFichier->insertSeparator();
-  menuFichier->insertItem( saveIcon, SAVE, this, SLOT(slotSave()), Qt::CTRL+Qt::Key_S );
-  menuFichier->insertItem( SAVE_AS, this, SLOT(slotSaveAs()) );
-  menuFichier->insertSeparator();
-  menuFichier->insertItem( FINISH, qApp, SLOT(quit()), Qt::Key_Q );
+  menuFichier->addAction( openIcon, READ, this, SLOT(slotLire()), Qt::CTRL+Qt::Key_L );
+  menuFichier->addSeparator();
+  menuFichier->addAction( saveIcon, SAVE, this, SLOT(slotSave()), Qt::CTRL+Qt::Key_S );
+  menuFichier->addAction( SAVE_AS, this, SLOT(slotSaveAs()) );
+  menuFichier->addSeparator();
+  menuFichier->addAction( FINISH, qApp, SLOT(quit()), Qt::Key_Q );
 #ifdef USE_SKIN
   menuFichier->setPalette( p, TRUE );
 #endif
@@ -145,35 +143,36 @@ Principale::Principale( void )
   // Menu Aide:
   menuAide = new QMenu;
   menuAide->addAction( "&About tp2" );
-  menuAide->insertItem( "About &Qt", this, SLOT( slotAproposQt() ) );
+  menuAide->addAction( "About &Qt", this, SLOT( slotAproposQt() ) );
 #ifdef USE_SKIN
   menuAide->setPalette( p, TRUE );
 #endif
 
   // Menu Ajout de bateau
   QMenu * bateaux = new QMenu;
-  bateaux->insertItem(boat1, BAT1, this, SLOT(Nv_Bat1()), Qt::Key_1);
-  bateaux->insertItem(boat2, BAT2, this, SLOT(Nv_Bat2()), Qt::Key_2);
-  bateaux->insertItem(boat3, BAT3, this, SLOT(Nv_Bat3()), Qt::Key_3);
-  bateaux->insertItem(boat4, BAT4, this, SLOT(Nv_Bat4()), Qt::Key_4);
-  bateaux->insertItem(boat5, BAT5, this, SLOT(Nv_Bat5()), Qt::Key_5);
+  bateaux->addAction(boat1, BAT1, this, SLOT(Nv_Bat1()), Qt::Key_1);
+  bateaux->addAction(boat2, BAT2, this, SLOT(Nv_Bat2()), Qt::Key_2);
+  bateaux->addAction(boat3, BAT3, this, SLOT(Nv_Bat3()), Qt::Key_3);
+  bateaux->addAction(boat4, BAT4, this, SLOT(Nv_Bat4()), Qt::Key_4);
+  bateaux->addAction(boat5, BAT5, this, SLOT(Nv_Bat5()), Qt::Key_5);
 #ifdef USE_SKIN
   bateaux->setPalette( p, TRUE );
 #endif
     
   // Menu Edition:
   menuEdition = new QMenu;
-  menuEdition->insertItem(ADD_BOAT, bateaux);
-  menuEdition->insertItem(x, ELIMINATE, graphique, SLOT(Delete_Objet()), Qt::Key_Delete);
-  menuEdition->insertSeparator();
-  menuEdition->insertItem(prop, PROPERTIES, graphique, SLOT(slotProprietes()));
+  menuEdition->addMenu(bateaux);
+  bateaux->setTitle(ADD_BOAT);
+  menuEdition->addAction(x, ELIMINATE, graphique, SLOT(Delete_Objet()), Qt::Key_Delete);
+  menuEdition->addSeparator();
+  menuEdition->addAction(prop, PROPERTIES, graphique, SLOT(slotProprietes()));
 #ifdef USE_SKIN
   menuEdition->setPalette( p, TRUE );
 #endif
 
   //Menu Jouer:
   menuJouer = new QMenu;
-  menuJouer->insertItem(TO_PLAY, this, SLOT(CommencerJeu()), Qt::Key_Return);
+  menuJouer->addAction(TO_PLAY, this, SLOT(CommencerJeu()), Qt::Key_Return);
 #ifdef USE_SKIN
   menuJouer->setPalette( p, TRUE );
 #endif
@@ -196,23 +195,30 @@ Principale::Principale( void )
 
   //    barreMenu->setItemChecked(ID_CDE,TRUE);
 
-  barreMenu->insertItem( FILES, menuFichier );
+  barreMenu->addMenu(menuFichier);
+  menuFichier->setTitle(FILES);
 
-  barreMenu->insertSeparator();
-  menuEditionID = barreMenu->insertItem( EDITING, menuEdition );
+  barreMenu->addSeparator();
+  //menuEditionID =  
+  barreMenu->addMenu(menuEdition);
+  menuEdition->setTitle(EDITING);
 
-  barreMenu->insertSeparator();
-  menuJeuID = barreMenu->insertItem( TO_PLAY, menuJouer );
+  barreMenu->addSeparator();
+  //menuJeuID = 
+  barreMenu->addMenu(menuJouer);
+  menuJouer->setTitle(TO_PLAY);
 
-  barreMenu->insertSeparator();
-  barreMenu->insertItem( "&Camera", menuCamera );
+  barreMenu->addSeparator();
+  barreMenu->addMenu(menuCamera);
+  menuCamera->setTitle( "&Camera");// SLOT(menuCamera) );
 
-  barreMenu->insertSeparator();
-  barreMenu->insertItem( "&Help", menuAide );
+  barreMenu->addSeparator();
+  barreMenu->addMenu(menuAide);
+  menuAide->setTitle("&Help");
 
   // Barre d'outils
-  QToolBar* barreOutils = new QToolBar( fenetrePrincipale, MAIN_DUTIES );
-  barreOutils->setLabel( MAIN_DUTIES );
+  QToolBar* barreOutils = new QToolBar( fenetrePrincipale);//, MAIN_DUTIES );
+  barreOutils->setWindowTitle( MAIN_DUTIES );
 
 //  QToolButton* bouton1;
   barreOutils->addAction(newIcon, NEW_PART, this, SLOT(slotNouveau()));
@@ -223,8 +229,8 @@ Principale::Principale( void )
 
 
   QToolBar* barreEdition;
-  barreEdition  = new QToolBar( fenetrePrincipale, ADDITION_OF_BOATS );
-  barreEdition->setLabel( ADDITION_OF_BOATS );
+  barreEdition  = new QToolBar( fenetrePrincipale);//, ADDITION_OF_BOATS );
+  barreEdition->setWindowTitle( ADDITION_OF_BOATS );
 
 
   barreEdition->addAction(boat1, BAT1, this, SLOT(Nv_Bat1()));
@@ -241,8 +247,8 @@ Principale::Principale( void )
 
   barreEdition->addAction(prop, BOAT_PROPERTIES, graphique, SLOT(slotProprietes()));
 
-  QToolBar* barreCam = new QToolBar( fenetrePrincipale, "Camera mode" );
-  barreCam->setLabel( "Camera mode" );
+  QToolBar* barreCam = new QToolBar( fenetrePrincipale);//, "Camera mode" );
+  barreCam->setWindowTitle( "Camera mode" );
 
 //  QToolButton* camera1;
   barreCam->addAction(cam1, "Mode 2D", this, SLOT(Cam_Mode1()));
@@ -251,7 +257,7 @@ Principale::Principale( void )
 //  QToolButton* camera3;
   barreCam->addAction(cam3, "Mode 3D Libre", this, SLOT(Cam_Mode3()));
 
-  fenetrePrincipale->setCaption(QString("TuxBattleship 3d "));
+  fenetrePrincipale->setWindowTitle(QString("TuxBattleship 3d "));
 
 #ifdef DBG_MODE
   cout << "Fin du constructeur de Principale\n";
@@ -308,7 +314,7 @@ void Principale::slotNouveau( void )
   graphique->New();
   QString s;
   File = s;
-  fenetrePrincipale->setCaption(QString("TuxBattleship 3d"));
+  fenetrePrincipale->setWindowTitle(QString("TuxBattleship 3d"));
   UpdateButtons();
 
   // cout << "Passe dans Nouveau" << endl;
@@ -330,11 +336,11 @@ void Principale::slotLire( void )
  
 
   // Une fenetre d'ouverture de fichier apparait et retourne le nom du fichier selectione
-  QString s = QFileDialog::getOpenFileName(
+  QString s = QFileDialog::getOpenFileName(this,
 					   "./",
 					   "Save files (*.sav)",
-					   this,
-					   "Open Saved Game",
+					   //this,
+					   //"Open Saved Game",
 					   "Open Saved Game" );
 
   // Verifie si l'usager a choisi un fichier ou a mis annule
@@ -344,7 +350,7 @@ void Principale::slotLire( void )
       File = s;
       graphique->Read(File);
 
-      fenetrePrincipale->setCaption(QString("TuxBattleship 3d : [") + File + QString("]"));
+      fenetrePrincipale->setWindowTitle(QString("TuxBattleship 3d : [") + File + QString("]"));
     }
 
   // Selectionne ou deselectione les boutons selon le mode de jeu
@@ -370,12 +376,12 @@ void Principale::slotSave( void )
     {
 
       // Demande le nom du fichier pour la sauvegarde
-      QString s = QFileDialog::getSaveFileName(
+      QString s = QFileDialog::getSaveFileName(this,
 					       "./",
 					       "Save files (*.sav)",
-					       this,
-					       "Save Game as",
-					       "Save Game as" );
+//					       this,
+					       "Save Game as");
+					      // "Save Game as" );
 
       // Si un nom de fichier a ete entre 
       if(!s.isEmpty())
@@ -385,7 +391,7 @@ void Principale::slotSave( void )
 	  File = s;
 	  // Ecriture dans le fichier et reconfiguration du titre de la fenetre
 	  graphique->Write(File);
-	  fenetrePrincipale->setCaption(QString("TuxBattleship 3d : [") + File + QString("]"));
+	  fenetrePrincipale->setWindowTitle(QString("TuxBattleship 3d : [") + File + QString("]"));
 	  QMessageBox::information( this, "TuxBattleship 3d",
 				    "Your game was saved succesfully.\n");
 	}
@@ -410,12 +416,12 @@ void Principale::slotSaveAs( void )
 {
     
   // Demande le nom du fichier pour la sauvegarde
-  QString s = QFileDialog::getSaveFileName(
+  QString s = QFileDialog::getSaveFileName(this,
 					   "./",
 					   "Save files (*.sav)",
-					   this,
-					   "Save Game as",
-					   "Save Game as" );
+//					   this,
+					   "Save Game as");
+					 // QString::fromUtf8( "Save Game as") );
   
   // Si un nom de fichier a ete entre 
  
@@ -426,7 +432,7 @@ void Principale::slotSaveAs( void )
       File = s;
       // Ecriture dans le fichier et reconfiguration du titre de la fenetre
       graphique->Write(File);
-      fenetrePrincipale->setCaption(QString("TuxBattleship 3d : [") + File + QString("]"));
+      fenetrePrincipale->setWindowTitle(QString("TuxBattleship 3d : [") + File + QString("]"));
       QMessageBox::information( this, "TuxBattleship 3d",
 				"Your game was saved succesfully.\n");
     }
@@ -672,8 +678,8 @@ void Principale::UpdateButtons()
       bouton15->setEnabled(true);
       bouton16->setEnabled(true);
       bouton17->setEnabled(true);
-      barreMenu->setItemEnabled(menuEditionID, true);
-      barreMenu->setItemEnabled(menuJeuID, true);
+      barreMenu->setEnabled(true);//menuEditionID, true);
+      barreMenu->setEnabled(true);//menuJeuID, true);
       graphique->setMouseTracking(true);
     } else {    // Sinon desactiver ces memes elements
       bouton11->setEnabled(false);
@@ -683,8 +689,8 @@ void Principale::UpdateButtons()
       bouton15->setEnabled(false);
       bouton16->setEnabled(false);
       bouton17->setEnabled(false);
-      barreMenu->setItemEnabled(menuEditionID, false);
-      barreMenu->setItemEnabled(menuJeuID, false);
+      barreMenu->setEnabled( false);
+      barreMenu->setEnabled( false);
       graphique->setMouseTracking(false);
     }*/
 }

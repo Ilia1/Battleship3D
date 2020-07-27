@@ -45,7 +45,7 @@ int main( int argc, char **argv )
   Principale* principale = new Principale;
   QMainWindow* fenetrePrincipale = principale->getFenetrePrincipale();
 
-  app.setMainWidget( fenetrePrincipale );
+//  app.setMainWidget( fenetrePrincipale );
   fenetrePrincipale->show( );
 
 

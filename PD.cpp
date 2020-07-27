@@ -25,7 +25,7 @@
  *  TRUE to construct a modal dialog.
  */
 PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bool modal, Qt::WFlags fl )
-  : QDialog( parent, name, modal, fl )
+  : QDialog( parent, fl )
 
 {
   int *HV = NULL;
@@ -35,101 +35,101 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   carte = c;
     
   if ( !name )
-    setName( "Properties Dialog" );
+    setWindowTitle( "Properties Dialog" );
 
-  Appliquer = new QPushButton( this, CLOSE );
+  Appliquer = new QPushButton(  CLOSE );
   Appliquer->setGeometry( QRect( 120, 520, 100, 40 ) );
   Appliquer->setDefault( TRUE );
 
-  pixmap_Label = new QLabel( this, "pixmap_Label" );
+  pixmap_Label = new QLabel(  "pixmap_Label", this );
   pixmap_Label->setGeometry( QRect( 10, 10, 100, 100 ) );
   pixmap_Label->setScaledContents( TRUE );
 
-  Type = new QComboBox( FALSE, this, "Type" );
+  Type = new QComboBox(this );
   Type->setGeometry( QRect( 130, 60, 181, 21 ) );
   Type->setMaxCount( 5 );
 
-  type_label = new QLabel( this, "type_label" );
+  type_label = new QLabel( "type_label", this );
   type_label->setGeometry( QRect( 130, 20, 181, 21 ) );
 
-  Orientation = new QGroupBox( this, "Orientation" );
+  Orientation = new QGroupBox( "Orientation", this );
   Orientation->setGeometry( QRect( 20, 120, 291, 50 ) );
 
-  Vertical = new QRadioButton( Orientation, VERTICAL );
+  Vertical = new QRadioButton(  VERTICAL, Orientation );
   Vertical->setGeometry( QRect( 150, 20, 111, 20 ) );
 
-  Horizontal = new QRadioButton( Orientation, HORIZONTAL );
+  Horizontal = new QRadioButton( HORIZONTAL, Orientation );
   Horizontal->setGeometry( QRect( 30, 20, 111, 21 ) );
   Horizontal->setChecked( FALSE );
 
-  Position_label = new QLabel( this, "Position" );
+  Position_label = new QLabel(  "Position", this );
   Position_label->setGeometry( QRect( 70, 220, 221, 16 ) );
 
-  frame_Pos = new QFrame( this, "frame_Pos" );
+  frame_Pos = new QFrame( this );
   frame_Pos->setGeometry( QRect( 60, 240, 240, 260 ) );
   frame_Pos->setFrameShape( QFrame::StyledPanel );
   frame_Pos->setFrameShadow( QFrame::Raised );
 
-  Pos = new QLineEdit( frame_Pos, "Pos" );
+  Pos = new QLineEdit( "Pos", frame_Pos );
   Pos->setGeometry( QRect( 10, 230, 201, 21 ) );
 
-  J = new QLabel( frame_Pos, "J" );
+  J = new QLabel( "J", frame_Pos );
   J->setGeometry( QRect( 220, 10, 16, 21 ) );
 
-  G = new QLabel( frame_Pos, "G" );
+  G = new QLabel( "G", frame_Pos );
   G->setGeometry( QRect( 220, 70, 16, 21 ) );
 
-  H = new QLabel( frame_Pos, "H" );
+  H = new QLabel( "H", frame_Pos );
   H->setGeometry( QRect( 220, 50, 16, 21 ) );
 
-  A = new QLabel( frame_Pos, "A" );
+  A = new QLabel( "A", frame_Pos );
   A->setGeometry( QRect( 220, 190, 16, 21 ) );
 
-  B = new QLabel( frame_Pos, "B" );
+  B = new QLabel( "B", frame_Pos );
   B->setGeometry( QRect( 220, 170, 16, 21 ) );
 
-  F = new QLabel( frame_Pos, "F" );
+  F = new QLabel( "F", frame_Pos );
   F->setGeometry( QRect( 220, 90, 16, 21 ) );
 
-  E = new QLabel( frame_Pos, "E" );
+  E = new QLabel( "E", frame_Pos );
   E->setGeometry( QRect( 220, 110, 16, 21 ) );
 
-  D = new QLabel( frame_Pos, "D" );
+  D = new QLabel( "D", frame_Pos );
   D->setGeometry( QRect( 220, 130, 16, 21 ) );
 
-  I = new QLabel( frame_Pos, "I" );
+  I = new QLabel( "I", frame_Pos );
   I->setGeometry( QRect( 220, 30, 16, 21 ) );
 
-  C= new QLabel( frame_Pos, "C_" );
+  C= new QLabel( "C_", frame_Pos );
   C->setGeometry( QRect( 220, 150, 16, 21 ) );
-  _1 = new QLabel( frame_Pos, "_1" );
+  _1 = new QLabel( "_1", frame_Pos );
   _1->setGeometry( QRect( 16, 210, 20, 20 ) );
 
-  _2 = new QLabel( frame_Pos, "_2" );
+  _2 = new QLabel( "_2", frame_Pos );
   _2->setGeometry( QRect( 36, 210, 20, 20 ) );
 
-  _3 = new QLabel( frame_Pos, "_3" );
+  _3 = new QLabel( "_3", frame_Pos );
   _3->setGeometry( QRect( 56, 210, 20, 20 ) );
 
-  _4 = new QLabel( frame_Pos, "_4" );
+  _4 = new QLabel( "_4", frame_Pos );
   _4->setGeometry( QRect( 76, 210, 20, 20 ) );
 
-  _5 = new QLabel( frame_Pos, "_5" );
+  _5 = new QLabel( "_5", frame_Pos );
   _5->setGeometry( QRect( 96, 210, 20, 20 ) );
 
-  _6 = new QLabel( frame_Pos, "_6" );
+  _6 = new QLabel( "_6", frame_Pos );
   _6->setGeometry( QRect( 116, 210, 20, 20 ) );
 
-  _7 = new QLabel( frame_Pos, "_7" );
+  _7 = new QLabel( "_7", frame_Pos );
   _7->setGeometry( QRect( 136, 210, 20, 20 ) );
 
-  _8 = new QLabel( frame_Pos, "_8" );
+  _8 = new QLabel( "_8", frame_Pos );
   _8->setGeometry( QRect( 156, 210, 20, 20 ) );
 
-  _9 = new QLabel( frame_Pos, "_9" );
+  _9 = new QLabel( "_9", frame_Pos );
   _9->setGeometry( QRect( 176, 210, 20, 20 ) );
 
-  _10 = new QLabel( frame_Pos, "_10" );
+  _10 = new QLabel( "_10", frame_Pos );
   _10->setGeometry( QRect( 196, 210, 20, 20 ) );
 
 
@@ -142,17 +142,17 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
       if(HV) delete []HV;
       HV = Grid2coord(i+1);
 	
-      Position[i] = new QPushButton( frame_Pos, temp.setNum(i+1) );
+      Position[i] = new QPushButton( temp.setNum(i+1), frame_Pos );
       Position[i]->setGeometry( QRect((20 * HV[0]) + 10, 200 - (20 * HV[1]) - 10, 20, 20 ) );
 	
       if(carte->GetObjet(i+1)->GetEtat() == 1 || carte->GetObjet(i+1)->GetEtat() == 3) 
-	Position[i]->setPixmap(QPixmap(cam1_xpm ));
+	Position[i]->setIcon(QPixmap(cam1_xpm ));
 	
       connect( Position[i], SIGNAL( clicked() ), this, SLOT( ChangePos() ) );
     }
     
-  Type->setCurrentItem(carte->GetSelectedObject()->GetType() - 1 );
-  Set_PixMap(Type->currentItem());
+  Type->setCurrentIndex(carte->GetSelectedObject()->GetType() - 1 );
+  Set_PixMap(Type->currentIndex());
     
   if(carte->GetSelectedObject()->GetDeg() == 0) 
     Horizontal->setChecked(true);
@@ -210,22 +210,22 @@ PropertiesD::~PropertiesD()
  */
 void PropertiesD::languageChange()
 {
-  setCaption( tr( CAPTION ) );
+  setWindowTitle( tr( CAPTION ) );
   Appliquer->setText( tr( CLOSE ) );
   pixmap_Label->setText( QString::null );
   Type->clear();
-  Type->insertItem( tr( BAT1 ) );
-  Type->insertItem( tr( BAT2 ) );
-  Type->insertItem( tr( BAT3 ) );
-  Type->insertItem( tr( BAT4 ) );
-  Type->insertItem( tr( BAT5 ) );
-  Type->setCurrentItem( 0 );
+  Type->insertItem(1, tr( BAT1 ) );
+  Type->insertItem(2, tr( BAT2 ) );
+  Type->insertItem(3, tr( BAT3 ) );
+  Type->insertItem(4, tr( BAT4 ) );
+  Type->insertItem(5, tr( BAT5 ) );
+  Type->setCurrentIndex( 0 );
   type_label->setText( tr( TYPE ) );
   Orientation->setTitle( tr( DIRECTION ) );
   Vertical->setText( tr( VERTICAL ) );
   Horizontal->setText( tr( HORIZONTAL ) );
   Position_label->setText( tr( POSITION ) );
-  Type->setCurrentItem( 0 );
+  Type->setCurrentIndex( 0 );
   Pos->setText( QString::null );
   J->setText( tr( "J" ) );
   G->setText( tr( "G" ) );
@@ -257,8 +257,8 @@ void PropertiesD::accept()
 void PropertiesD::ChangeSize(int i)
 {
   carte->GetSelectedObject()->SetType(carte, i + 1);
-  Type->setCurrentItem(carte->GetSelectedObject()->GetType() - 1 );
-  Set_PixMap(Type->currentItem());
+  Type->setCurrentIndex(carte->GetSelectedObject()->GetType() - 1 );
+  Set_PixMap(Type->currentIndex());
   RefreshMap();
 }
 
@@ -284,15 +284,15 @@ void PropertiesD::RefreshMap(void)
   for(int i = 0; i < 100 ; i++)
     {
       if(carte->GetObjet(i+1)->GetEtat() == 1 || carte->GetObjet(i+1)->GetEtat() == 3) 
-	Position[i]->setPixmap(QPixmap(cam1_xpm ));
+	Position[i]->setIcon(QPixmap(cam1_xpm ));
       else
-	Position[i]->setPixmap(0);
+	Position[i]->setIcon(QPixmap(cam1_xpm));
     }
 }
 
 void PropertiesD::ChangePos(void)
 {
-  QString tempstring = sender()->name();
+  QString tempstring = sender()->objectName();
   int gridid = tempstring.toInt();
   carte->GetSelectedObject()->MoveBoat(carte, gridid);
   RefreshMap();

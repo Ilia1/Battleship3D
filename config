@@ -9,7 +9,7 @@
 #define SKIN3_ 78
 
 // Uncomment to Use skinned interface
-#define USE_SKIN
+// #define USE_SKIN
 
 // #define NO_TEXT		// Set if you don't support renderText
 #define EN	 		// Set language : FR = Francais ; EN = English

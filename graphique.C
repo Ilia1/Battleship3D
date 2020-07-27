@@ -1,9 +1,5 @@
 #include "headers.h"
-//Added by qt3to4:
-#include <QTimerEvent>
-#include <QKeyEvent>
-//#include <Q3PopupMenu>
-#include <QMouseEvent>
+
 
 /**
  * @fn  Graphique::Graphique( void )
@@ -15,7 +11,7 @@
  *
  */
 Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , QMainWindow * fenetreP)
-  : QGLWidget( parent, name )
+  : QGLWidget(parent)
 {
 #ifdef DBG_MODE
   cout << "Constructeur de Graphique\n";
@@ -58,9 +54,9 @@ Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q
 
   // Construire le menu popup
   menuPopup = new QMenu();
-  menuPopup->insertItem( "&Deplacer", this, SLOT( Deplacer_Objet() ), 0, 1 );
-  menuPopup->insertItem( "&Eliminer", this, SLOT( Delete_Objet() ), 0, 2 );
-  menuPopup->insertItem( "&Proprietes...", this, SLOT( slotProprietes() ), 0, 3 );
+  menuPopup->addAction( "&Deplacer", this, SLOT( Deplacer_Objet() ) );
+  menuPopup->addAction( "&Eliminer", this, SLOT( Delete_Objet() ) );
+  menuPopup->addAction( "&Proprietes...", this, SLOT( slotProprietes() ) );
 
 #ifdef USE_SKIN
   QPalette p( QColor( 75, 123, 130 ) );
@@ -287,14 +283,14 @@ void Graphique::paintGL()
 
   //statusbar->message(fpsstring);
 
-  if(fenetrePrincipale->caption().contains(QString("FPS"))) 
+  if(fenetrePrincipale->windowTitle().contains(QString("FPS"))) 
     {
-      QString C = fenetrePrincipale->caption();
-      C.truncate(C.find("FPS") - 5);
-      fenetrePrincipale->setCaption(C);
+      QString C = fenetrePrincipale->windowTitle();
+      C.truncate(C.indexOf("FPS") - 5);
+      fenetrePrincipale->setWindowTitle(C);
     }
 
-  fenetrePrincipale->setCaption(fenetrePrincipale->caption() + QString("     FPS : ") + fpsstring);
+  fenetrePrincipale->setWindowTitle(fenetrePrincipale->windowTitle() + QString("     FPS : ") + fpsstring);
 
   // dessine le modele et son contenu
   leModele->afficher(temps);
@@ -392,7 +388,7 @@ void Graphique::mouseMoveEvent( QMouseEvent* ev )
 void Graphique::Write(QString File)
 {
   cout << "Saving...\n";
-  ofstream out(File, ios::out);
+  ofstream out(File.toUtf8().constData(), std::ios::out);
 
   if(out.fail())
     {
@@ -403,7 +399,7 @@ void Graphique::Write(QString File)
     {
       out << Edit << " " << tour << " " << end << " " 
 	  << pause << " " << temps <<  " " << tempsincr << " " 
-	  << (const char *) fpsstring  << " " << fpsec << " " << endl;
+	  << fpsstring.toUtf8().constData()  << " " << fpsec << " " << endl;
       CameraGlobale->Write(out);
       leModele->Write(out);
       
@@ -417,7 +413,7 @@ void Graphique::Write(QString File)
 
 void Graphique::Read(QString File)
 {
-  ifstream in(File);
+  ifstream in(File.toUtf8().constData());
 
   string temp;
   in >> Edit >> tour >> end >> pause
@@ -744,9 +740,9 @@ void Graphique::PriseEnChargeMouseEdit(QMouseEvent * ev)
 
   if(Objet > 200 && Objet < 500)
     {
-      menuPopup->setItemEnabled(1, true );
-      menuPopup->setItemEnabled(2, true );
-      menuPopup->setItemEnabled(3, true );
+     /* menuPopup->setEnabled( true );
+      menuPopup->setEnabled( true );
+      menuPopup->setEnabled( true );*/
 
       if(leModele->GetObjet(Objet)->GetSelect() && ev->button() == Qt::LeftButton)
 	{
@@ -761,9 +757,9 @@ void Graphique::PriseEnChargeMouseEdit(QMouseEvent * ev)
           leModele->GetObjet(Objet)->Selected();
         }
     } else {
-      menuPopup->setItemEnabled(1, false );
-      menuPopup->setItemEnabled(2, false );
-      menuPopup->setItemEnabled(3, false );
+/*      menuPopup->setEnabled( false );
+      menuPopup->setEnabled( false );
+      menuPopup->setEnabled( false );*/
     }
 }
 
