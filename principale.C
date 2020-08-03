@@ -3,7 +3,6 @@
  ****************************************************************/
 
 #include "headers.h"
-
 // Chargement des pixmap
 #include "./images/filesave.xpm"
 #include "./images/fileopen.xpm"
@@ -96,7 +95,6 @@ Principale::Principale( void )
   fenetrePrincipale->setPalette( p, TRUE );
   //fenetrePrincipale->setFont( QFont( "times", QApplication::font().pointSize() ), TRUE );
 #endif
-    
 
 
   // Creation de la barre de status
@@ -125,6 +123,7 @@ Principale::Principale( void )
 #ifdef DBG_MODE
   cout << "Construction des items\n";
 #endif
+
 
   // Creer trois menus
   // Menu Fichier:
@@ -216,9 +215,12 @@ Principale::Principale( void )
   barreMenu->addMenu(menuAide);
   menuAide->setTitle("&Help");
 
+
   // Barre d'outils
-  QToolBar* barreOutils = new QToolBar( fenetrePrincipale);//, MAIN_DUTIES );
+  barreOutils = fenetrePrincipale->addToolBar(MAIN_DUTIES);
+
   barreOutils->setWindowTitle( MAIN_DUTIES );
+
 
 //  QToolButton* bouton1;
   barreOutils->addAction(newIcon, NEW_PART, this, SLOT(slotNouveau()));
@@ -229,7 +231,7 @@ Principale::Principale( void )
 
 
   QToolBar* barreEdition;
-  barreEdition  = new QToolBar( fenetrePrincipale);//, ADDITION_OF_BOATS );
+  barreEdition  = fenetrePrincipale->addToolBar( ADDITION_OF_BOATS );
   barreEdition->setWindowTitle( ADDITION_OF_BOATS );
 
 
@@ -247,7 +249,7 @@ Principale::Principale( void )
 
   barreEdition->addAction(prop, BOAT_PROPERTIES, graphique, SLOT(slotProprietes()));
 
-  QToolBar* barreCam = new QToolBar( fenetrePrincipale);//, "Camera mode" );
+  QToolBar* barreCam = fenetrePrincipale->addToolBar( "Camera mode" );
   barreCam->setWindowTitle( "Camera mode" );
 
 //  QToolButton* camera1;
@@ -257,12 +259,14 @@ Principale::Principale( void )
 //  QToolButton* camera3;
   barreCam->addAction(cam3, "Mode 3D Libre", this, SLOT(Cam_Mode3()));
 
-  fenetrePrincipale->setWindowTitle(QString("TuxBattleship 3d "));
+//  fenetrePrincipale->setWindowTitle(QString("TuxBattleship 3d "));
+
 
 #ifdef DBG_MODE
   cout << "Fin du constructeur de Principale\n";
 #endif
 }
+
 
 /*---------------------------------------------------------------------------
  * FONCTION: Principale

@@ -66,6 +66,7 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   Position_label->setGeometry( QRect( 70, 220, 221, 16 ) );
 
   frame_Pos = new QFrame( this );
+//  frame_Pos->setTitle("frame_Pos");
   frame_Pos->setGeometry( QRect( 60, 240, 240, 260 ) );
   frame_Pos->setFrameShape( QFrame::StyledPanel );
   frame_Pos->setFrameShadow( QFrame::Raised );

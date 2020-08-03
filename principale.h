@@ -14,7 +14,7 @@ class Principale : public QWidget
   Principale( void );
   ~Principale();
   QMainWindow* getFenetrePrincipale( void ) { return fenetrePrincipale; };
-	   
+
   private slots:
     void slotNouveau();
   void slotLire();
@@ -43,7 +43,7 @@ class Principale : public QWidget
   QMenu* menuEdition;
   QMenu* menuCamera;
   QMenu* menuJouer;
-   
+  QToolBar* barreOutils; 
   QToolButton* bouton11;
   QToolButton* bouton12;
   QToolButton* bouton13;
@@ -52,7 +52,7 @@ class Principale : public QWidget
   QToolButton* bouton16;
   QToolButton* bouton17;
   QMenuBar* barreMenu;
-  int menuEditionID, menuJeuID;
+  //int menuEditionID, menuJeuID;
   class Graphique* graphique;
   QString File;
 };

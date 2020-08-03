@@ -73,7 +73,7 @@ using namespace std;
 #include <QIcon>
 #include <QKeyEvent>
 #include <QTimerEvent>
-
+#include <QObject>
 
 // Declaration des classes
 class Principale;
