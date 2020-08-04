@@ -147,6 +147,7 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
       Position[i] = new QPushButton( temp.setNum(i+1), frame_Pos );
       Position[i]->setGeometry( QRect((20 * HV[0]) + 10, 200 - (20 * HV[1]) - 10, 20, 20 ) );
       Position[i]->setObjectName(QString::number(i+1));
+      Position[i]->setText("");
 	
       if(carte->GetObjet(i+1)->GetEtat() == 1 || carte->GetObjet(i+1)->GetEtat() == 3) 
       Position[i]->setIcon(QPixmap(cam1_xpm ));
