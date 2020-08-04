@@ -2,9 +2,6 @@
 #define PROPERTIESD_H
 
 #include "headers.h"
-//Added by qt3to4:
-#include <QLabel>
-#include <QFrame>
 
 class PropertiesD : public QDialog
 {
