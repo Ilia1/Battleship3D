@@ -74,6 +74,8 @@ using namespace std;
 #include <QKeyEvent>
 #include <QTimerEvent>
 #include <QObject>
+#include <QColorGroup>
+#include <QPalette>
 
 // Declaration des classes
 class Principale;

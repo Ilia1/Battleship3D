@@ -37,7 +37,7 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   if ( !name )
     setWindowTitle( "Properties Dialog" );
 
-  Appliquer = new QPushButton(  CLOSE );
+  Appliquer = new QPushButton( CLOSE, this );
   Appliquer->setGeometry( QRect( 120, 520, 100, 40 ) );
   Appliquer->setDefault( TRUE );
 
@@ -45,7 +45,8 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   pixmap_Label->setGeometry( QRect( 10, 10, 100, 100 ) );
   pixmap_Label->setScaledContents( TRUE );
 
-  Type = new QComboBox(this );
+  Type = new QComboBox( this );
+  Type->setObjectName("Type");
   Type->setGeometry( QRect( 130, 60, 181, 21 ) );
   Type->setMaxCount( 5 );
 
@@ -66,7 +67,7 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   Position_label->setGeometry( QRect( 70, 220, 221, 16 ) );
 
   frame_Pos = new QFrame( this );
-//  frame_Pos->setTitle("frame_Pos");
+  frame_Pos->setObjectName("frame_Pos");
   frame_Pos->setGeometry( QRect( 60, 240, 240, 260 ) );
   frame_Pos->setFrameShape( QFrame::StyledPanel );
   frame_Pos->setFrameShadow( QFrame::Raised );
@@ -147,7 +148,7 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
       Position[i]->setGeometry( QRect((20 * HV[0]) + 10, 200 - (20 * HV[1]) - 10, 20, 20 ) );
 	
       if(carte->GetObjet(i+1)->GetEtat() == 1 || carte->GetObjet(i+1)->GetEtat() == 3) 
-	Position[i]->setIcon(QPixmap(cam1_xpm ));
+	//Position[i]->setIcon(QPixmap(cam1_xpm ));
 	
       connect( Position[i], SIGNAL( clicked() ), this, SLOT( ChangePos() ) );
     }
@@ -166,25 +167,25 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
 #ifdef USE_SKIN
   // Load the skin
   QPalette p( QColor( 75, 123, 130 ) );
-  p.setColor( QPalette::Active, QColorGroup::Base, QColor( SKIN1, SKIN2, SKIN3 ) );
-  p.setColor( QPalette::Inactive, QColorGroup::Base, QColor( SKIN1, SKIN2, SKIN3 ) );
-  p.setColor( QPalette::Disabled, QColorGroup::Base, QColor( SKIN1, SKIN2, SKIN3 ) );
-  p.setColor( QPalette::Active, QColorGroup::Highlight, Qt::white );
-  p.setColor( QPalette::Active, QColorGroup::HighlightedText, QColor( SKIN1, SKIN2, SKIN3 ) );
-  p.setColor( QPalette::Inactive, QColorGroup::Highlight, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::HighlightedText, QColor( SKIN1, SKIN2, SKIN3 ) );
-  p.setColor( QPalette::Disabled, QColorGroup::Highlight, Qt::white );
-  p.setColor( QPalette::Disabled, QColorGroup::HighlightedText, QColor( SKIN1, SKIN2, SKIN3 ) );
-  p.setColor( QPalette::Active, QColorGroup::Foreground, Qt::white );
-  p.setColor( QPalette::Active, QColorGroup::Text, Qt::white );
-  p.setColor( QPalette::Active, QColorGroup::ButtonText, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::Foreground, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::Text, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::ButtonText, Qt::white );
-  p.setColor( QPalette::Disabled, QColorGroup::Foreground, Qt::lightGray );
-  p.setColor( QPalette::Disabled, QColorGroup::Text, Qt::lightGray );
-  p.setColor( QPalette::Disabled, QColorGroup::ButtonText, Qt::lightGray );
-  setPalette( p, TRUE );
+  p.setColor( QPalette::Active, QPalette::Base, QColor( SKIN1, SKIN2, SKIN3 ) );
+  p.setColor( QPalette::Inactive, QPalette::Base, QColor( SKIN1, SKIN2, SKIN3 ) );
+  p.setColor( QPalette::Disabled, QPalette::Base, QColor( SKIN1, SKIN2, SKIN3 ) );
+  p.setColor( QPalette::Active, QPalette::Highlight, Qt::white );
+  p.setColor( QPalette::Active, QPalette::HighlightedText, QColor( SKIN1, SKIN2, SKIN3 ) );
+  p.setColor( QPalette::Inactive, QPalette::Highlight, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::HighlightedText, QColor( SKIN1, SKIN2, SKIN3 ) );
+  p.setColor( QPalette::Disabled, QPalette::Highlight, Qt::white );
+  p.setColor( QPalette::Disabled, QPalette::HighlightedText, QColor( SKIN1, SKIN2, SKIN3 ) );
+  p.setColor( QPalette::Active, QPalette::Foreground, Qt::white );
+  p.setColor( QPalette::Active, QPalette::Text, Qt::white );
+  p.setColor( QPalette::Active, QPalette::ButtonText, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::Foreground, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::Text, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::ButtonText, Qt::white );
+  p.setColor( QPalette::Disabled, QPalette::Foreground, Qt::lightGray );
+  p.setColor( QPalette::Disabled, QPalette::Text, Qt::lightGray );
+  p.setColor( QPalette::Disabled, QPalette::ButtonText, Qt::lightGray );
+  setPalette( p );
   //setFont( QFont( "times", QApplication::font().pointSize() ), TRUE );
 #endif
 

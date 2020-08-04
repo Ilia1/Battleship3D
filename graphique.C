@@ -60,25 +60,25 @@ Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q
 
 #ifdef USE_SKIN
   QPalette p( QColor( 75, 123, 130 ) );
-  p.setColor( QPalette::Active, QColorGroup::Base, QColor( SKIN1_, SKIN2_, SKIN3_ ) );
-  p.setColor( QPalette::Inactive, QColorGroup::Base, QColor(SKIN1_ ,SKIN2_ , SKIN3_ ) );
-  p.setColor( QPalette::Disabled, QColorGroup::Base, QColor(SKIN1_ ,SKIN2_ ,SKIN3_  ) );
-  p.setColor( QPalette::Active, QColorGroup::Highlight, Qt::white );
-  p.setColor( QPalette::Active, QColorGroup::HighlightedText, QColor(SKIN1_ ,SKIN2_ ,SKIN3_  ) );
-  p.setColor( QPalette::Inactive, QColorGroup::Highlight, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::HighlightedText, QColor( SKIN1_,SKIN2_ ,SKIN3_  ) );
-  p.setColor( QPalette::Disabled, QColorGroup::Highlight, Qt::white );
-  p.setColor( QPalette::Disabled, QColorGroup::HighlightedText, QColor( SKIN1_,SKIN2_ ,SKIN3_  ) );
-  p.setColor( QPalette::Active, QColorGroup::Foreground, Qt::white );
-  p.setColor( QPalette::Active, QColorGroup::Text, Qt::white );
-  p.setColor( QPalette::Active, QColorGroup::ButtonText, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::Foreground, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::Text, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::ButtonText, Qt::white );
-  p.setColor( QPalette::Disabled, QColorGroup::Foreground, Qt::lightGray );
-  p.setColor( QPalette::Disabled, QColorGroup::Text, Qt::lightGray );
-  p.setColor( QPalette::Disabled, QColorGroup::ButtonText, Qt::lightGray );
-  menuPopup->setPalette( p, TRUE );
+  p.setColor( QPalette::Active, QPalette::Base, QColor( SKIN1_, SKIN2_, SKIN3_ ) );
+  p.setColor( QPalette::Inactive, QPalette::Base, QColor(SKIN1_ ,SKIN2_ , SKIN3_ ) );
+  p.setColor( QPalette::Disabled, QPalette::Base, QColor(SKIN1_ ,SKIN2_ ,SKIN3_  ) );
+  p.setColor( QPalette::Active, QPalette::Highlight, Qt::white );
+  p.setColor( QPalette::Active, QPalette::HighlightedText, QColor(SKIN1_ ,SKIN2_ ,SKIN3_  ) );
+  p.setColor( QPalette::Inactive, QPalette::Highlight, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::HighlightedText, QColor( SKIN1_,SKIN2_ ,SKIN3_  ) );
+  p.setColor( QPalette::Disabled, QPalette::Highlight, Qt::white );
+  p.setColor( QPalette::Disabled, QPalette::HighlightedText, QColor( SKIN1_,SKIN2_ ,SKIN3_  ) );
+  p.setColor( QPalette::Active, QPalette::Foreground, Qt::white );
+  p.setColor( QPalette::Active, QPalette::Text, Qt::white );
+  p.setColor( QPalette::Active, QPalette::ButtonText, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::Foreground, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::Text, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::ButtonText, Qt::white );
+  p.setColor( QPalette::Disabled, QPalette::Foreground, Qt::lightGray );
+  p.setColor( QPalette::Disabled, QPalette::Text, Qt::lightGray );
+  p.setColor( QPalette::Disabled, QPalette::ButtonText, Qt::lightGray );
+  menuPopup->setPalette( p );
 #endif
 
 #ifdef DBG_MODE

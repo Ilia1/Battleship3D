@@ -74,25 +74,25 @@ Principale::Principale( void )
   cout << "Construction de la palette pour le skin\n";
 #endif
   QPalette p( QColor( 75, 123, 130 ) );
-  p.setColor( QPalette::Active, QColorGroup::Base, QColor( 55, 77, 78 ) );
-  p.setColor( QPalette::Inactive, QColorGroup::Base, QColor( 55, 77, 78 ) );
-  p.setColor( QPalette::Disabled, QColorGroup::Base, QColor( 55, 77, 78 ) );
-  p.setColor( QPalette::Active, QColorGroup::Highlight, Qt::white );
-  p.setColor( QPalette::Active, QColorGroup::HighlightedText, QColor( 55, 77, 78 ) );
-  p.setColor( QPalette::Inactive, QColorGroup::Highlight, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::HighlightedText, QColor( 55, 77, 78 ) );
-  p.setColor( QPalette::Disabled, QColorGroup::Highlight, Qt::white );
-  p.setColor( QPalette::Disabled, QColorGroup::HighlightedText, QColor( 55, 77, 78 ) );
-  p.setColor( QPalette::Active, QColorGroup::Foreground, Qt::white );
-  p.setColor( QPalette::Active, QColorGroup::Text, Qt::white );
-  p.setColor( QPalette::Active, QColorGroup::ButtonText, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::Foreground, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::Text, Qt::white );
-  p.setColor( QPalette::Inactive, QColorGroup::ButtonText, Qt::white );
-  p.setColor( QPalette::Disabled, QColorGroup::Foreground, Qt::lightGray );
-  p.setColor( QPalette::Disabled, QColorGroup::Text, Qt::lightGray );
-  p.setColor( QPalette::Disabled, QColorGroup::ButtonText, Qt::lightGray );
-  fenetrePrincipale->setPalette( p, TRUE );
+  p.setColor( QPalette::Active, QPalette::Base, QColor( 55, 77, 78 ) );
+  p.setColor( QPalette::Inactive, QPalette::Base, QColor( 55, 77, 78 ) );
+  p.setColor( QPalette::Disabled, QPalette::Base, QColor( 55, 77, 78 ) );
+  p.setColor( QPalette::Active, QPalette::Highlight, Qt::white );
+  p.setColor( QPalette::Active, QPalette::HighlightedText, QColor( 55, 77, 78 ) );
+  p.setColor( QPalette::Inactive, QPalette::Highlight, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::HighlightedText, QColor( 55, 77, 78 ) );
+  p.setColor( QPalette::Disabled, QPalette::Highlight, Qt::white );
+  p.setColor( QPalette::Disabled, QPalette::HighlightedText, QColor( 55, 77, 78 ) );
+  p.setColor( QPalette::Active, QPalette::Foreground, Qt::white );
+  p.setColor( QPalette::Active, QPalette::Text, Qt::white );
+  p.setColor( QPalette::Active, QPalette::ButtonText, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::Foreground, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::Text, Qt::white );
+  p.setColor( QPalette::Inactive, QPalette::ButtonText, Qt::white );
+  p.setColor( QPalette::Disabled, QPalette::Foreground, Qt::lightGray );
+  p.setColor( QPalette::Disabled, QPalette::Text, Qt::lightGray );
+  p.setColor( QPalette::Disabled, QPalette::ButtonText, Qt::lightGray );
+  fenetrePrincipale->setPalette( p );
   //fenetrePrincipale->setFont( QFont( "times", QApplication::font().pointSize() ), TRUE );
 #endif
 
@@ -136,7 +136,7 @@ Principale::Principale( void )
   menuFichier->addSeparator();
   menuFichier->addAction( FINISH, qApp, SLOT(quit()), Qt::Key_Q );
 #ifdef USE_SKIN
-  menuFichier->setPalette( p, TRUE );
+  menuFichier->setPalette( p );
 #endif
 
   // Menu Aide:
@@ -144,7 +144,7 @@ Principale::Principale( void )
   menuAide->addAction( "&About tp2" );
   menuAide->addAction( "About &Qt", this, SLOT( slotAproposQt() ) );
 #ifdef USE_SKIN
-  menuAide->setPalette( p, TRUE );
+  menuAide->setPalette( p );
 #endif
 
   // Menu Ajout de bateau
@@ -155,7 +155,7 @@ Principale::Principale( void )
   bateaux->addAction(boat4, BAT4, this, SLOT(Nv_Bat4()), Qt::Key_4);
   bateaux->addAction(boat5, BAT5, this, SLOT(Nv_Bat5()), Qt::Key_5);
 #ifdef USE_SKIN
-  bateaux->setPalette( p, TRUE );
+  bateaux->setPalette( p );
 #endif
     
   // Menu Edition:
@@ -166,14 +166,14 @@ Principale::Principale( void )
   menuEdition->addSeparator();
   menuEdition->addAction(prop, PROPERTIES, graphique, SLOT(slotProprietes()));
 #ifdef USE_SKIN
-  menuEdition->setPalette( p, TRUE );
+  menuEdition->setPalette( p );
 #endif
 
   //Menu Jouer:
   menuJouer = new QMenu;
   menuJouer->addAction(TO_PLAY, this, SLOT(CommencerJeu()), Qt::Key_Return);
 #ifdef USE_SKIN
-  menuJouer->setPalette( p, TRUE );
+  menuJouer->setPalette( p );
 #endif
 
   // Menu Camera:
@@ -182,7 +182,7 @@ Principale::Principale( void )
   menuCamera->addAction(cam2, "&Orbit in 3D", this, SLOT(Cam_Mode2()), Qt::Key_P);
   menuCamera->addAction(cam3, "&Free in 3D", this, SLOT(Cam_Mode3()), Qt::Key_S);
 #ifdef USE_SKIN
-  menuCamera->setPalette( p, TRUE );
+  menuCamera->setPalette( p );
 #endif
 
 #ifdef DBG_MODE
