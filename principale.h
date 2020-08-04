@@ -52,7 +52,7 @@ class Principale : public QWidget
   QToolButton* bouton16;
   QToolButton* bouton17;
   QMenuBar* barreMenu;
-  //int menuEditionID, menuJeuID;
+  QToolBar* barreEdition;
   class Graphique* graphique;
   QString File;
 };

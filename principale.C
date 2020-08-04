@@ -230,7 +230,7 @@ Principale::Principale( void )
   barreOutils->addAction(saveIcon, SAVE_GAME, this, SLOT(slotSave()));
 
 
-  QToolBar* barreEdition;
+//  QToolBar* barreEdition;
   barreEdition  = fenetrePrincipale->addToolBar( ADDITION_OF_BOATS );
   barreEdition->setWindowTitle( ADDITION_OF_BOATS );
 
@@ -675,26 +675,12 @@ void Principale::UpdateButtons()
   // Si on est en mode d'edition, activation les menus et les boutons de la barre d'outil
   if(graphique->GetEdit())
     {
-      bouton11->setEnabled( true);
-      bouton12->setEnabled(true);
-      bouton13->setEnabled(true);
-      bouton14->setEnabled(true);
-      bouton15->setEnabled(true);
-      bouton16->setEnabled(true);
-      bouton17->setEnabled(true);
-      barreMenu->setEnabled(true);//menuEditionID, true);
-      barreMenu->setEnabled(true);//menuJeuID, true);
+      barreEdition->setVisible(true);
+      menuEdition->menuAction()->setVisible(true);
       graphique->setMouseTracking(true);
     } else {    // Sinon desactiver ces memes elements
-      bouton11->setEnabled(false);
-      bouton12->setEnabled(false);
-      bouton13->setEnabled(false);
-      bouton14->setEnabled(false);
-      bouton15->setEnabled(false);
-      bouton16->setEnabled(false);
-      bouton17->setEnabled(false);
-      barreMenu->setEnabled( false);
-      barreMenu->setEnabled( false);
+      barreEdition->setVisible(false);
+      menuEdition->menuAction()->setVisible(false);
       graphique->setMouseTracking(false);
     }
 }
