@@ -673,7 +673,7 @@ void Principale::CommencerJeu()
 void Principale::UpdateButtons()
 {
   // Si on est en mode d'edition, activation les menus et les boutons de la barre d'outil
-/*  if(graphique->GetEdit())
+  if(graphique->GetEdit())
     {
       bouton11->setEnabled( true);
       bouton12->setEnabled(true);
@@ -696,5 +696,5 @@ void Principale::UpdateButtons()
       barreMenu->setEnabled( false);
       barreMenu->setEnabled( false);
       graphique->setMouseTracking(false);
-    }*/
+    }
 }

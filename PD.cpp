@@ -146,9 +146,10 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
 	
       Position[i] = new QPushButton( temp.setNum(i+1), frame_Pos );
       Position[i]->setGeometry( QRect((20 * HV[0]) + 10, 200 - (20 * HV[1]) - 10, 20, 20 ) );
+      Position[i]->setObjectName(QString::number(i+1));
 	
       if(carte->GetObjet(i+1)->GetEtat() == 1 || carte->GetObjet(i+1)->GetEtat() == 3) 
-	//Position[i]->setIcon(QPixmap(cam1_xpm ));
+      Position[i]->setIcon(QPixmap(cam1_xpm ));
 	
       connect( Position[i], SIGNAL( clicked() ), this, SLOT( ChangePos() ) );
     }
@@ -288,7 +289,7 @@ void PropertiesD::RefreshMap(void)
       if(carte->GetObjet(i+1)->GetEtat() == 1 || carte->GetObjet(i+1)->GetEtat() == 3) 
 	Position[i]->setIcon(QPixmap(cam1_xpm ));
       else
-	Position[i]->setIcon(QPixmap(cam1_xpm));
+	Position[i]->setIcon(QIcon());
     }
 }
 
@@ -301,7 +302,7 @@ void PropertiesD::ChangePos(void)
 
   tempstring.setNum(carte->GetSelectedObject()->GetL0());
   Pos->setText(tempstring);
-#ifdef DEBUG_
+#ifdef DBG_MODE
   cout << "called change pos on : " << gridid;
 #endif
 }
