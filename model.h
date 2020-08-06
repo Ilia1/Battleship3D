@@ -10,13 +10,13 @@ class Models3D
   ~Models3D();
   //void DrawSub(double, double);
   //void DrawCarrier(double, double);
-  void MakeList(t3DModel&, char *);
+  void MakeList(t3DModel&, const char *);
   //void Init(void);
-  void LoadModel(char *);
-  void DrawModel(char *);
+  void LoadModel(const char *);
+  void DrawModel(const char *);
 
  private:
-  map<char *, GLuint> ListIDs;
+  map<const char *, GLuint> ListIDs;
   //t3DModel Sub, Carrier;
   //CLoad3DS g_Load3ds, g_Load3ds2;
   CLoad3DS g_Load3ds[10];

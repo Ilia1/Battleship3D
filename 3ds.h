@@ -49,7 +49,7 @@ class CLoad3DS
   CLoad3DS();                             // This inits the data members
 
   // This is the function that you call to load the 3DS
-  bool Import3DS(t3DModel *pModel, char *strFileName);
+  bool Import3DS(t3DModel *pModel, const char *strFileName);
 
  private:
   // This reads in a string and saves it in the char array passed in

@@ -78,7 +78,7 @@ ImageTGA * Textures::LoadTGA(const char *nomfichier)
 
 
 // Fonction qui creer une texture OPENGL a partir de notre image
-void Textures::CreerTexture(char *NomFichier)
+void Textures::CreerTexture(const char *NomFichier)
 {
   if(!NomFichier)
     return;
@@ -151,7 +151,7 @@ void Textures::CreerTexture(char *NomFichier)
 }
 
 
-void Textures::BindTexture(char *NomFichier)
+void Textures::BindTexture(const char *NomFichier)
 {
   unsigned int tex = textureIDs[NomFichier];
   glBindTexture(GL_TEXTURE_2D, tex);

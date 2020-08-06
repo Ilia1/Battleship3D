@@ -10,12 +10,12 @@ Models3D::~Models3D()
 {
 }
 
-void Models3D::MakeList(t3DModel & g_3DModel, char * NomFichier)
+void Models3D::MakeList(t3DModel & g_3DModel, const char * NomFichier)
 {
   ListIDs[NomFichier] = glGenLists(1);
 
 #ifdef DBG_MODE	
-  cout << "model " <<  NomFichier << " a une liste : " << ListIDs[NomFichier] << endl;
+  cout << "model " <<  NomFichier << " has a list : " << ListIDs[NomFichier] << endl;
 
   cout << "IN MAKE of " << ListIDs[NomFichier] << " " << NomFichier << endl;
 
@@ -131,7 +131,7 @@ void Models3D::MakeList(t3DModel & g_3DModel, char * NomFichier)
 #endif
 }
 
-void Models3D::LoadModel(char * NomFichier)
+void Models3D::LoadModel(const char * NomFichier)
 {
 #ifdef DBG_MODE
   cout << "Importing " << NomFichier << endl;
@@ -181,7 +181,7 @@ void Models3D::LoadModel(char * NomFichier)
   i++;
 }
 
-void Models3D::DrawModel(char * NomFichier)
+void Models3D::DrawModel(const char * NomFichier)
 {
 
   if(!strcmp(NomFichier, "./models/sub.3ds")) glCallList(1);

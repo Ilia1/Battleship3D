@@ -33,3 +33,7 @@
 #define MESSAGE_SINK "Well done! You SINK an enemy ship!"
 #define MESSAGE_CASE_TESTED "Case already tested !!! Repeat"
 #define MESSAGE_PERIPHERY_BOAT "Periphery of boat ... no boat possible in this box !!! Try again"
+#define MSG_TOUCH_BOAT "The enemy has HIT a boat in your fleet!"
+#define MSG_ENEMY_SUN_BOAT "The enemy has SUN a ship in your fleet!"
+#define MISSING_BOAT "You are missing a type boat:"
+#define MSG_MUST_PLACE_BOAT "You must place the previous boat on the map!"

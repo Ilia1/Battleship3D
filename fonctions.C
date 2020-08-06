@@ -46,11 +46,11 @@ bool JeuOrdi(CarteNavale *laCarte)
 
       if(laCarte->GetObjet(Objet)->GetEtat() == 2 && laCarte->GetObjet(Objet)->GetEtatJeu() == 0)
         {
-          laCarte->GetText()->addText("L'ennemi a TOUCHE un bateau de votre flote!", 0);
+          laCarte->GetText()->addText(MSG_TOUCH_BOAT, 0);
           laCarte->GetObjet(Objet)->SetEtatJeu(1);
           laCarte->GetObjet(Objet)->Touche();
           if(laCarte->GetObjet(laCarte->GetObjet(Objet)->GetBateau())->VerifierCoule(laCarte)) 
-            laCarte->GetText()->addText("L'enemi a COULE un bateau de votre flote!", 0);
+            laCarte->GetText()->addText(MSG_ENEMY_SUN_BOAT, 0);
           break;
         }
       if(laCarte->GetObjet(Objet)->GetEtat() == 3 && laCarte->GetObjet(Objet)->GetTouche() == 1)
@@ -71,8 +71,8 @@ bool VerifierBateaux(CarteNavale * laCarte)
   bool OK = true;
   bool *Bateaux =  laCarte->VerifierBateaux();
   
-  string message = "Il vous manque un bateau de type : ";
-  string message2 = "";
+  string message( MISSING_BOAT);
+  string message2 = " ";
   for (i = 0 ; i < 5 ; i++)
     {
       if(Bateaux[i] == false)
@@ -81,19 +81,24 @@ bool VerifierBateaux(CarteNavale * laCarte)
 	  switch(i+1)
             {
             case 1 :
-              message2 += "Contre-torpilleur   ";
+              message2 += BAT1;
+	      message2 += ", ";
               break;
             case 2:
-              message2 += "Sous-marin   ";
+              message2 += BAT2 ;
+	      message2 += ", ";
               break;
             case 3:
-              message2 += "Croiseur   ";
+              message2 += BAT3;
+	      message2 += ", ";
               break;
             case 4:
-              message2 += "Cuirasse   ";
+              message2 += BAT4;
+	      message2 += ", ";
               break;
             case 5:
-              message2 += "Porte-avion   ";
+              message2 += BAT5;
+	      message2 += ", ";
               break;
             }
 	}
@@ -101,7 +106,7 @@ bool VerifierBateaux(CarteNavale * laCarte)
   if( !OK )
     {
       message += message2;
-      laCarte->GetText()->addText(message.c_str(), 0);
+      laCarte->GetText()->addText(strdup(message.c_str()), 0);
     }
 
   return OK;
@@ -189,7 +194,7 @@ void NouveauBateau(CarteNavale *LaCarte, int taille)
 	      LaCarte->GetObjet(id)->Selected();
 	      LaCarte->GetObjet(id)->Edit();
 	    } else {
-	      LaCarte->GetText()->addText("Vous devez placer le bateau precedant sur la carte!", 0);
+	      LaCarte->GetText()->addText(MSG_MUST_PLACE_BOAT, 0);
 	    }
 	}
 

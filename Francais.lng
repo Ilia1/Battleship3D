@@ -32,3 +32,7 @@
 #define MESSAGE_SINK "Bravo! Vous avez COULE un bateau ennemi!"
 #define MESSAGE_CASE_TESTED "Case deja testee!!! Recommencez"
 #define MESSAGE_PERIPHERY_BOAT "Peripherie de bateau... aucun bateau possible dans cette case!!!Recommencez"
+#define MSG_TOUCH_BOAT "L'ennemi a TOUCHE un bateau de votre flote!"
+#define MSG_ENEMY_SUN_BOAT "L'enemi a COULE un bateau de votre flote!"
+#define MISSING_BOAT "Il vous manque un bateau de type :"
+#define MSG_MUST_PLACE_BOAT "Vous devez placer le bateau precedant sur la carte!"

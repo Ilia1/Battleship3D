@@ -15,10 +15,10 @@ class Textures
 {
  public:
   ImageTGA *LoadTGA(const char *nomfichier);
-  void CreerTexture(char *NomFichier);
-  void BindTexture(char *NomFichier);
-  unsigned int GetTexture(char *Nom) { return textureIDs[Nom]; };
-  map<char *, unsigned int> textureIDs;
+  void CreerTexture(const char *NomFichier);
+  void BindTexture(const char *NomFichier);
+  unsigned int GetTexture(const char *Nom) { return textureIDs[Nom]; };
+  map<const char *, unsigned int> textureIDs;
 };
 
 #endif

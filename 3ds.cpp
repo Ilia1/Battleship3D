@@ -40,7 +40,7 @@ CLoad3DS::CLoad3DS()
 /////
 ///////////////////////////////// IMPORT 3DS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
 
-bool CLoad3DS::Import3DS(t3DModel *pModel, char *strFileName)
+bool CLoad3DS::Import3DS(t3DModel *pModel, const char *strFileName)
 {
   char strMessage[255] = {0};
 
