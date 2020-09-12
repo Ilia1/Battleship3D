@@ -31,7 +31,7 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   int *HV = NULL;
 
   QString  temp;
-    
+  this->setFixedSize(350, 600);
   carte = c;
     
   if ( !name )
@@ -53,17 +53,17 @@ PropertiesD::PropertiesD( CarteNavale * c, QWidget* parent, const char* name, bo
   type_label = new QLabel( "type_label", this );
   type_label->setGeometry( QRect( 130, 20, 181, 21 ) );
 
-  Orientation = new QGroupBox( "Orientation", this );
+  Orientation = new QGroupBox(trUtf8( "Orientation"), this );
   Orientation->setGeometry( QRect( 20, 120, 291, 50 ) );
 
-  Vertical = new QRadioButton(  VERTICAL, Orientation );
+  Vertical = new QRadioButton(trUtf8(  VERTICAL), Orientation );
   Vertical->setGeometry( QRect( 150, 20, 111, 20 ) );
 
-  Horizontal = new QRadioButton( HORIZONTAL, Orientation );
+  Horizontal = new QRadioButton(trUtf8( HORIZONTAL), Orientation );
   Horizontal->setGeometry( QRect( 30, 20, 111, 21 ) );
   Horizontal->setChecked( FALSE );
 
-  Position_label = new QLabel(  "Position", this );
+  Position_label = new QLabel( trUtf8( "Position"), this );
   Position_label->setGeometry( QRect( 70, 220, 221, 16 ) );
 
   frame_Pos = new QFrame( this );

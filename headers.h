@@ -76,6 +76,7 @@ using namespace std;
 #include <QObject>
 #include <QColorGroup>
 #include <QPalette>
+#include <QTranslator>
 
 // Declaration des classes
 class Principale;

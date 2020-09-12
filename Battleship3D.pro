@@ -7,7 +7,7 @@ TARGET =
 DEPENDPATH += .
 INCLUDEPATH += .
 LIBS += -lglut -lGLU
-
+TRANSLATIONS = languages/Translation_en.ts  languages/Translation_fr.ts
 # Input
 HEADERS += 3ds.h \
            3dsModel.h \

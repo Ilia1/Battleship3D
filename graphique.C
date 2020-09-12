@@ -1,5 +1,5 @@
 #include "headers.h"
-
+#include <QPainter>
 
 /**
  * @fn  Graphique::Graphique( void )
@@ -30,7 +30,7 @@ Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q
   leModele = new CarteNavale(this);
    
 #ifdef DBG_MODE
-  cout << "Creation des models\n";
+  cout << "Creation of models\n";
 #endif
   lesModeles3D = new Models3D(leModele->GetTextures());
 #ifdef DBG_MODE
@@ -54,9 +54,9 @@ Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q
 
   // Construire le menu popup
   menuPopup = new QMenu();
-  menuPopup->addAction( "&Deplacer", this, SLOT( Deplacer_Objet() ) );
-  menuPopup->addAction( "&Eliminer", this, SLOT( Delete_Objet() ) );
-  menuPopup->addAction( "&Proprietes...", this, SLOT( slotProprietes() ) );
+  menuPopup->addAction(trUtf8( "&Deplacer"), this, SLOT( Deplacer_Objet() ) );
+  menuPopup->addAction(trUtf8( "&Eliminer"), this, SLOT( Delete_Objet() ) );
+  menuPopup->addAction(trUtf8( "&Proprietes..."), this, SLOT( slotProprietes() ) );
 
 #ifdef USE_SKIN
   QPalette p( QColor( 75, 123, 130 ) );
@@ -82,7 +82,7 @@ Graphique::Graphique( QWidget* parent, const char* name, QStatusBar * status , Q
 #endif
 
 #ifdef DBG_MODE
-  cout << "Fin du constructeur de Graphique\n";
+  cout << "End of construction of Graphique\n";
 #endif
 }
 
@@ -263,10 +263,11 @@ void Graphique::paintGL()
 #ifndef NO_TEXT
       if(!Edit)
 	{
-	  renderText(10, 20, "Computer -> ", QFont("flexure", 14));
-	  renderText(145, 20, leModele->BateauxEnnemi(), QFont("flexure", 14));
-	  renderText(trans->GetWidth() - 125, 20, "Player -> ", QFont("flexure", 14));
-	  renderText(trans->GetWidth() -30, 20, leModele->BateauxAllie(), QFont("flexure", 14));
+//		Principale::barreStatut->message("comp");
+	  renderText(10, 20,QString::fromUtf8(  "Computer -> "), QFont("flexure", 14));
+	  renderText(145, 20,  leModele->BateauxEnnemi(), QFont("flexure", 14));
+	  renderText(trans->GetWidth() - 125, 20,  "Player -> ", QFont("flexure", 14));
+	  renderText(trans->GetWidth() -30, 20,  leModele->BateauxAllie(), QFont("flexure", 14));
 	}
 #endif
       //renderText(10, trans->GetHeight()- 10, "FPS : " ,  QFont("Arial Black", 10));

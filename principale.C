@@ -178,9 +178,9 @@ Principale::Principale( void )
 
   // Menu Camera:
   menuCamera = new QMenu;
-  menuCamera->addAction(cam1, "&Camera 2D", this, SLOT(Cam_Mode1()), Qt::Key_H);
-  menuCamera->addAction(cam2, "&Orbit in 3D", this, SLOT(Cam_Mode2()), Qt::Key_P);
-  menuCamera->addAction(cam3, "&Free in 3D", this, SLOT(Cam_Mode3()), Qt::Key_S);
+  menuCamera->addAction(cam1,tr( "&Camera 2D"), this, SLOT(Cam_Mode1()), Qt::Key_H);
+  menuCamera->addAction(cam2,tr( "&Orbit in 3D"), this, SLOT(Cam_Mode2()), Qt::Key_P);
+  menuCamera->addAction(cam3,tr( "&Free in 3D"), this, SLOT(Cam_Mode3()), Qt::Key_S);
 #ifdef USE_SKIN
   menuCamera->setPalette( p );
 #endif
@@ -195,69 +195,69 @@ Principale::Principale( void )
   //    barreMenu->setItemChecked(ID_CDE,TRUE);
 
   barreMenu->addMenu(menuFichier);
-  menuFichier->setTitle(FILES);
+  menuFichier->setTitle(tr(FILES));
 
   barreMenu->addSeparator();
   //menuEditionID =  
   barreMenu->addMenu(menuEdition);
-  menuEdition->setTitle(EDITING);
+  menuEdition->setTitle(tr(EDITING));
 
   barreMenu->addSeparator();
   //menuJeuID = 
   barreMenu->addMenu(menuJouer);
-  menuJouer->setTitle(TO_PLAY);
+  menuJouer->setTitle(tr(TO_PLAY));
 
   barreMenu->addSeparator();
   barreMenu->addMenu(menuCamera);
-  menuCamera->setTitle( "&Camera");// SLOT(menuCamera) );
+  menuCamera->setTitle(tr( "&Camera"));// SLOT(menuCamera) );
 
   barreMenu->addSeparator();
   barreMenu->addMenu(menuAide);
-  menuAide->setTitle("&Help");
+  menuAide->setTitle(tr("&Help"));
 
 
   // Barre d'outils
   barreOutils = fenetrePrincipale->addToolBar(MAIN_DUTIES);
 
-  barreOutils->setWindowTitle( MAIN_DUTIES );
+  barreOutils->setWindowTitle(tr( MAIN_DUTIES) );
 
 
 //  QToolButton* bouton1;
-  barreOutils->addAction(newIcon, NEW_PART, this, SLOT(slotNouveau()));
+  barreOutils->addAction(newIcon,tr( NEW_PART), this, SLOT(slotNouveau()));
 //  QToolButton* bouton2;
-  barreOutils->addAction(openIcon, LOAD_GAME, this, SLOT(slotLire()));
+  barreOutils->addAction(openIcon,tr( LOAD_GAME), this, SLOT(slotLire()));
 //  QToolButton* bouton3;
-  barreOutils->addAction(saveIcon, SAVE_GAME, this, SLOT(slotSave()));
+  barreOutils->addAction(saveIcon,tr( SAVE_GAME), this, SLOT(slotSave()));
 
 
 //  QToolBar* barreEdition;
   barreEdition  = fenetrePrincipale->addToolBar( ADDITION_OF_BOATS );
-  barreEdition->setWindowTitle( ADDITION_OF_BOATS );
+  barreEdition->setWindowTitle(tr( ADDITION_OF_BOATS) );
 
 
-  barreEdition->addAction(boat1, BAT1, this, SLOT(Nv_Bat1()));
+  barreEdition->addAction(boat1,tr( BAT1), this, SLOT(Nv_Bat1()));
 
-  barreEdition->addAction(boat2, BAT2, this, SLOT(Nv_Bat2()));
+  barreEdition->addAction(boat2,tr( BAT2), this, SLOT(Nv_Bat2()));
 
-  barreEdition->addAction(boat3, BAT3, this, SLOT(Nv_Bat3()));
+  barreEdition->addAction(boat3,tr( BAT3), this, SLOT(Nv_Bat3()));
 
-  barreEdition->addAction(boat4, BAT4, this, SLOT(Nv_Bat4()));
+  barreEdition->addAction(boat4,tr( BAT4), this, SLOT(Nv_Bat4()));
 
-  barreEdition->addAction(boat5, BAT5, this, SLOT(Nv_Bat5()));
+  barreEdition->addAction(boat5,tr( BAT5), this, SLOT(Nv_Bat5()));
 
-  barreEdition->addAction(x, CLEAR_BOAT, this, SLOT(Delete_Objet()));
+  barreEdition->addAction(x,tr( CLEAR_BOAT), this, SLOT(Delete_Objet()));
 
-  barreEdition->addAction(prop, BOAT_PROPERTIES, graphique, SLOT(slotProprietes()));
+  barreEdition->addAction(prop,tr( BOAT_PROPERTIES), graphique, SLOT(slotProprietes()));
 
   QToolBar* barreCam = fenetrePrincipale->addToolBar( "Camera mode" );
-  barreCam->setWindowTitle( "Camera mode" );
+  barreCam->setWindowTitle(tr( "Camera mode") );
 
 //  QToolButton* camera1;
-  barreCam->addAction(cam1, "Mode 2D", this, SLOT(Cam_Mode1()));
+  barreCam->addAction(cam1, tr("Mode 2D"), this, SLOT(Cam_Mode1()));
 //  QToolButton* camera2;
-  barreCam->addAction(cam2, "Mode 3D sur Sphere", this, SLOT(Cam_Mode2()));
+  barreCam->addAction(cam2,tr( "Mode 3D sur Sphere"), this, SLOT(Cam_Mode2()));
 //  QToolButton* camera3;
-  barreCam->addAction(cam3, "Mode 3D Libre", this, SLOT(Cam_Mode3()));
+  barreCam->addAction(cam3,tr( "Mode 3D Libre"), this, SLOT(Cam_Mode3()));
 
 //  fenetrePrincipale->setWindowTitle(QString("TuxBattleship 3d "));
 
